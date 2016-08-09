@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "pug": "pug -w ./views/SPA/index.pug -o ./public/build/"
+    "pug": "pug -w ./app/views/SPA/index.pug -o ./public/build/"
   },
   "dependencies": {
     "angular": "^1.5.8",

@@ -17,7 +17,7 @@ angular
     $scope.showLogin = function() {
         $mdDialog.show({
         controller: 'LoginController',
-        templateUrl: 'login.tmpl.html',
+        templateUrl: '/build/loginModal.html',
         parent: angular.element(document.body),
         clickOutsideToClose:true
       });      

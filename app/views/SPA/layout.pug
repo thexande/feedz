@@ -4,7 +4,14 @@ html
     title
     //- link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="/nm/angular-material/angular-material.css")
-  body
+  body.md-no-animations(layout='column', ng-app='myApp', ng-controller='appController', ng-cloak='')
+    md-toolbar(layout='row',  md-whiteframe='4')
+      .md-toolbar-tools
+        span feedz
+        span.flex
+        md-button About
+        md-button Courses
+        md-button(ng-click='showLogin();') Login
     block content
     script(type="text/javascript", src="/nm/angular/angular.js")
     script(type="text/javascript", src="/nm/angular-material/angular-material.js")
@@ -17,5 +24,7 @@ html
     script(type="text/javascript", src="/js/angular/app.js")
     //-  angular controllers
     //- angular factories
+    //- angular templates
+    script(type="text/ng-template", id="login.tmpl.html", src="/build/loginModal.html")
 
     

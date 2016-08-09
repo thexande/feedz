@@ -2,8 +2,8 @@ angular
    .module('myApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-      .primaryPalette('yellow')
-      .accentPalette('blue');
+      .primaryPalette('green')
+      .accentPalette('indigo');
   
     // Define a theme for the Login dialogs; 
     // @see <md-dialog md-theme="login">...</md-dialog>

@@ -37,5 +37,6 @@
       //-         md-icon.s16(md-font-icon='icon-facebook')
       //-         span(translate='LOGIN_V2.WITH_FACEBOOK') Log in with Facebook
       .register(layout='row', layout-sm='column', layout-align='center center')
-        span.text(translate='LOGIN_V2.DONT_HAVE_ACCOUNT') Don&apos;t have an account?
-        a.link(ui-sref='app.pages_auth_register-v2', translate='LOGIN_V2.CREATE_ACCOUNT')
+        div.text(translate='LOGIN_V2.DONT_HAVE_ACCOUNT') Don&apos;t have an account?
+      .register(layout='row', layout-sm='column', layout-align='center center')
+        a.link(ui-sref='register', translate='LOGIN_V2.CREATE_ACCOUNT') Register Now

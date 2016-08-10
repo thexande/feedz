@@ -33,6 +33,10 @@ const Feedz = angular
       url: '/login',
       templateUrl: '/build/login.html'
     })
+    .state('register', {
+      url: '/register',
+      templateUrl: '/build/registerIndex.html'
+    })
     .state('dash', {
       url: '/dash',
       templateUrl: '/build/sideNav.html',

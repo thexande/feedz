@@ -12,7 +12,7 @@ const Feedz = angular
   })
 
   Feedz.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('login')
+  // $urlRouterProvider.otherwise('login')
   // GitHub auth
   // $authProvider.github({
   //   name: 'github',
@@ -35,18 +35,22 @@ const Feedz = angular
     })
     .state('dash', {
       url: '/dash',
-      templateUrl: '/build/dashIndex.html',
-      controller: 'dashController'
+      templateUrl: '/build/sideNav.html',
     })
     .state('dash.home', {
-      url: '/dash/home',
+      url: '/home',
       templateUrl: '/build/dashIndex.html',
       controller: 'dashController'
     })
     .state('dash.feeds', {
-      url: '/dash/feeds',
+      url: '/feeds',
       templateUrl: '/build/feedsIndex.html',
       controller: 'feedsController'
+    })
+    .state('dash.post', {
+      url: '/post',
+      templateUrl: '/build/postIndex.html',
+      controller: 'postController'
     })
     .state('logout', {
 		  url: '/logout',
@@ -83,17 +87,17 @@ Feedz.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog
   };
  	$scope.menu = [
     {
-      link : '/#/dash',
+      link : '/#/dash/home',
       title: 'Dashboard',
       icon: 'dashboard'
     },
     {
-      link : '/#/feeds',
+      link : '/#/dash/feeds',
       title: 'Feedz',
       icon: 'group'
     },
     {
-      link : '/#/posts',
+      link : '/#/dash/post',
       title: 'Posts',
       icon: 'message'
     },

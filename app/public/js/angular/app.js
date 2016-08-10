@@ -71,33 +71,22 @@ Feedz.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog
   };
  	$scope.menu = [
     {
-      link : '',
+      link : '/#/dash',
       title: 'Dashboard',
       icon: 'dashboard'
     },
     {
-      link : '',
-      title: 'Friends',
+      link : '/#/feeds',
+      title: 'Feedz',
       icon: 'group'
     },
     {
-      link : '',
-      title: 'Messages',
+      link : '/#/posts',
+      title: 'Posts',
       icon: 'message'
     }
   ];
-  $scope.admin = [
-    {
-      link : '',
-      title: 'Trash',
-      icon: 'delete'
-    },
-    {
-      link : 'showListBottomSheet($event)',
-      title: 'Settings',
-      icon: 'settings'
-    }
-  ];
+
   $scope.activity = [
       {
         what: 'Brunch this weekend?',
@@ -190,14 +179,14 @@ Feedz.directive('userAvatar', function() {
 });
 
 Feedz.config(function($mdThemingProvider) {
-  var customBlueMap = 		$mdThemingProvider.extendPalette('light-blue', {
+  var customBlueMap = 		$mdThemingProvider.extendPalette('green', {
     'contrastDefaultColor': 'light',
     'contrastDarkColors': ['50'],
     '50': 'ffffff'
   });
-  $mdThemingProvider.definePalette('customBlue', customBlueMap);
+  $mdThemingProvider.definePalette('customGreen', customBlueMap);
   $mdThemingProvider.theme('default')
-    .primaryPalette('customBlue', {
+    .primaryPalette('customGreen', {
       'default': '500',
       'hue-1': '50'
     })

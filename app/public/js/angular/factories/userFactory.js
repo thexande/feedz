@@ -7,6 +7,13 @@ angular.module('feedz.userFactory', [])
         url: '/users/login',
         data: user
       })
+    },
+    registerUser: (user) => {
+      return $http({
+        method: 'post',
+        url: '/users/register',
+        data: user
+      })
     }
   }
 })

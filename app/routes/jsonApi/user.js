@@ -12,5 +12,6 @@ router.route('/')
     })
 router.route('/login')
     .post((req, res, next) => {res.json(req.body)})
-
+router.route('/register')
+    .post((req, res, next) => res.json(req.body))
 module.exports = router;

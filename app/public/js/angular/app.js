@@ -12,7 +12,7 @@ const Feedz = angular
   })
 
   Feedz.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-  // $urlRouterProvider.otherwise('login')
+  $urlRouterProvider.otherwise('login')
   // GitHub auth
   // $authProvider.github({
   //   name: 'github',
@@ -35,7 +35,8 @@ const Feedz = angular
     })
     .state('register', {
       url: '/register',
-      templateUrl: '/build/registerIndex.html'
+      templateUrl: '/build/registerIndex.html',
+      controller: 'registerController'
     })
     .state('dash', {
       url: '/dash',

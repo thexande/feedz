@@ -1,15 +1,10 @@
   angular.module('feedz.registerController', [])
-  .controller('registerController', function($scope, $mdDialog, $log) {
-    $scope.cancel = function() {
-      $mdDialog.hide();
-    };
-    $scope.register = function() {
-      $log.debug("register()...");
-      $mdDialog.hide();
-    };
-    $scope.user = {
-      company: 'Google, Inc.',
-      email: 'ThomasBurleson@Gmail.com',
-      phone: ''
-    };
+  .controller('registerController', function($scope, $mdDialog, $log, userFactory) {
+    $scope.registerSubmit = () => {
+      userFactory.registerUser($scope.newUser).then((user) => {
+        console.log(user)
+      })
+      console.log($scope.newUser)
+    }
+  
   })

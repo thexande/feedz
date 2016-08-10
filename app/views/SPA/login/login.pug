@@ -3,12 +3,11 @@
   #login-v2-intro(flex='', hide='', show-gt-sm='')
     .logo.md-accent-bg
       span F
-    .title(translate='LOGIN_V2.INTRO_TITLE')
-    .description(translate='LOGIN_V2.INTRO_DESCRIPTION')
+    .title(translate='LOGIN_V2.INTRO_TITLE') title here
+    .description(translate='LOGIN_V2.INTRO_DESCRIPTION') intro here
   #login-v2-form-wrapper.flex-scrollable.md-whiteframe-8dp(ms-scroll='')
     #login-v2-form
-      h2 FEEDZ
-      .title(translate='LOGIN_V2.TITLE') Log in to your account
+      .title(translate='LOGIN_V2.TITLE') Please Login to Feedz
       form(name='loginForm', novalidate='')
         md-input-container.md-block(md-no-float='')
           input(type='email', name='email', ng-model='vm.form.email', placeholder='Email', translate='', translate-attr-placeholder='LOGIN_V2.EMAIL', ng-pattern='/^.+@.+\..+$/', required='')
@@ -22,23 +21,21 @@
           div(ng-messages='loginForm.password.$error', role='alert')
             div(ng-message='required')
               span(translate='LOGIN_V2.ERRORS.PASSWORD_REQUIRED') Password field is required
-        .remember-forgot-password(layout='row', layout-sm='column', layout-align='space-between center')
-          md-checkbox.remember-me(ng-model='data.cb1', aria-label='Remember Me')
-            span(translate='LOGIN_V2.REMEMBER_ME') Remember Me
-          a.forgot-password.md-accent-color(ui-sref='app.pages_auth_forgot-password', translate='LOGIN_V2.FORGOT_PASSWORD') Forgot Password?
-      .separator
-        span.text(translate='LOGIN_V2.OR') OR
-      div(layout='column', layout-align='start center')
-        md-button.md-raised.google
-        div(layout='row', layout-align='center center')
-            span
-              md-icon.s16(md-font-icon='icon-google-plus')
-              span(translate='LOGIN_V2.WITH_GOOGLE') Log in with Google
-        md-button.md-raised.facebook
-          div(layout='row', layout-align='center center')
-            span
-              md-icon.s16(md-font-icon='icon-facebook')
-              span(translate='LOGIN_V2.WITH_FACEBOOK') Log in with Facebook
+          div(layout='column', layout-align='start center')
+            md-button.md-raised.indigo.white-text Login
+      //- .separator
+      //-   span.text(translate='LOGIN_V2.OR') OR
+      //- div(layout='column', layout-align='start center')
+      //-   md-button.md-raised.google
+      //-   div(layout='row', layout-align='center center')
+      //-       span
+      //-         md-icon.s16(md-font-icon='icon-google-plus')
+      //-         span(translate='LOGIN_V2.WITH_GOOGLE') Log in with Google
+      //-   md-button.md-raised.facebook
+      //-     div(layout='row', layout-align='center center')
+      //-       span
+      //-         md-icon.s16(md-font-icon='icon-facebook')
+      //-         span(translate='LOGIN_V2.WITH_FACEBOOK') Log in with Facebook
       .register(layout='row', layout-sm='column', layout-align='center center')
         span.text(translate='LOGIN_V2.DONT_HAVE_ACCOUNT') Don&apos;t have an account?
         a.link(ui-sref='app.pages_auth_register-v2', translate='LOGIN_V2.CREATE_ACCOUNT')

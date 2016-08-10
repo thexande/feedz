@@ -6,8 +6,33 @@ html(ng-app="feedz")
     link(rel="stylesheet", href="/nm/angular-material/angular-material.css")
     link(rel="stylesheet", href="/nm/materialize-css/dist/css/materialize.min.css")
     link(rel='stylesheet', href='//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css')
-  body(layout='row', ng-controller='AppCtrl' ui-view="")
-
+  body(layout='row', ng-controller='AppCtrl')
+    md-sidenav.md-sidenav-left.md-whiteframe-z2(layout='column', md-component-id='left', md-is-locked-open="$mdMedia('gt-md')")
+      md-toolbar.md-tall.md-hue-2
+        span(flex='')
+        .md-toolbar-tools-bottom.inset(layout='column')
+          user-avatar
+          span
+          div Firstname Lastname
+          div email@domainname.com
+      md-list
+        md-item(ng-repeat='item in menu')
+          a
+            md-item-content(md-ink-ripple='', layout='row', layout-align='start center')
+              .inset
+                ng-md-icon(icon='{{item.icon}}')
+              .inset
+                | {{item.title}}
+        md-divider
+        md-subheader Management
+        md-item(ng-repeat='item in admin')
+          a
+            md-item-content(md-ink-ripple='', layout='row', layout-align='start center')
+              .inset
+                ng-md-icon(icon='{{item.icon}}')
+              .inset
+                | {{item.title}}
+    .relative(layout='column', layout-fill='', role='main' ui-view="")
 
     script(type="text/javascript", src="/nm/angular/angular.js")
     script(type="text/javascript", src="/nm/angular-ui-router/release/angular-ui-router.js")

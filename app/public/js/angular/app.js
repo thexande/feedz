@@ -1,69 +1,61 @@
-angular
-   .module('myApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+const Feedz = angular
+   .module('feedz',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui.router',
+    'feedz.appController', 'feedz.loginController', 'feedz.registerController',
+    'feedz.userFactory'])
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('green')
-      .accentPalette('indigo');
-  
-    // Define a theme for the Login dialogs; 
-    // @see <md-dialog md-theme="login">...</md-dialog>
-  
     $mdThemingProvider.theme('login')
       .primaryPalette('indigo')
       .accentPalette('green');
-    
-  })
-  .controller('appController',function($scope,$mdDialog){
-    $scope.showLogin = function() {
-        $mdDialog.show({
-        controller: 'LoginController',
-        templateUrl: '/build/loginModal.html',
-        parent: angular.element(document.body),
-        clickOutsideToClose:true
-      });      
-    }  
-
-  })
-  .controller('LoginController', function($scope, $mdDialog, $log) {
-    $scope.cancel = function() {
-      $mdDialog.hide();
-    };
-    $scope.login = function() {
-      $log.debug("login()...");
-      $mdDialog.hide();
-    };
-    $scope.user = {
-      company: 'Google, Inc.',
-      email: 'ThomasBurleson@Gmail.com',
-      phone: ''
-    };
-        $scope.showRegister = function() {
-
-        $mdDialog.show({
-        controller: 'registerController',
-        templateUrl: '/build/registerModal.html',
-        parent: angular.element(document.body),
-        clickOutsideToClose:true
-      });      
-    }  
-  })
-  .controller('registerController', function($scope, $mdDialog, $log) {
-    $scope.cancel = function() {
-      $mdDialog.hide();
-    };
-    $scope.register = function() {
-      $log.debug("register()...");
-      $mdDialog.hide();
-    };
-    $scope.user = {
-      company: 'Google, Inc.',
-      email: 'ThomasBurleson@Gmail.com',
-      phone: ''
-    };
   })
 
+  Feedz.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('root')
+  // GitHub auth
+  // $authProvider.github({
+  //   name: 'github',
+  //   // heroku
+  //   // url: 'http://www.commitmap.com/githubUser',
+  //   // localhost
+  //   url: '/githubUser',
+  //   // commitMapSatelizer Id
+  //   clientId:'79c1a9391aa406e3f0a5',
 
-/*
-Copyright 2016 Google Inc. All Rights Reserved. 
-Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
-*/
+  //   type: '2.0',
+  //   redirectUri: 'http://localhost:3000/#/dash',
+  //   popupOptions: { width: 1020, height: 618 },
+  //   authorizationEndpoint: 'https://github.com/login/oauth/authorize'
+  // })
+  $stateProvider
+    .state('root', {
+      url: '/',
+      templateUrl: '/build/root.html'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: '/build/login.html',
+      controller: 'appController'
+
+    })
+    // .state('dash', {
+    //   url: '/dash',
+    //   templateUrl: 'build/dash.html',
+    //   controller: 'dashController'
+    // })
+    // .state('dash.repoSelect', {
+    //   url: '/reposelect',
+    //   templateUrl: 'build/repo-select.html',
+    //   controller: 'repoSelectController'
+    // })
+    // .state('dash.activity', {
+    //   url: '/activity',
+    //   templateUrl: 'build/activity.html',
+    //   controller: 'activityController'
+    // })
+    // .state('dash.home', {
+    //   url: '/home',
+    //   templateUrl: 'build/dash-child.html'
+
+    // })
+})

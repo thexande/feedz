@@ -10,5 +10,7 @@ router.route('/')
     .get((req, res, next) => {
         userModel.getUser().then((resp) => {res.json(resp)})
     })
+router.route('/login')
+    .post((req, res, next) => {res.json(req.body)})
 
 module.exports = router;

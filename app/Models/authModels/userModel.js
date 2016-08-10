@@ -1,7 +1,7 @@
-const knex = require('../../config/db/knex/knexConfig')
+const db = require('../../config/db/knex/knexConfig')
 module.exports = class userModel {
   constructor() {}
   getUser() {
-    return knex('feedz_users')
+    return db.knex('feedz_users')
   }
 }

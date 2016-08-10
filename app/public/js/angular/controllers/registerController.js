@@ -4,7 +4,6 @@
       userFactory.registerUser($scope.newUser).then((user) => {
         console.log(user)
       })
-      console.log($scope.newUser)
     }
   
   })

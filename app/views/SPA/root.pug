@@ -5,21 +5,8 @@ html(ng-app="feedz")
     //- link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="/nm/angular-material/angular-material.css")
     link(rel="stylesheet", href="/nm/materialize-css/dist/css/materialize.min.css")
-  body.md-no-animations(layout='column', ng-app='feedz', ng-controller='appController', ng-cloak='')
-    header
-      md-toolbar(layout='row',  md-whiteframe='4')
-        .md-toolbar-tools
-          h2 feedz
-          span.flex
-          md-button About
-          md-button Courses
-          md-button(ng-click='showLogin();') Login
-    main(ui-view="")  
-    footer
-      md-toolbar.md-medium-tall
-        div(layout='row', layout-align='center center', flex='')
-          span FOOTER
-
+    link(rel='stylesheet', href='//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css')
+  body(layout='row', ng-controller='AppCtrl' ui-view="")
 
 
     script(type="text/javascript", src="/nm/angular/angular.js")

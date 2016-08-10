@@ -1,5 +1,5 @@
 const Feedz = angular
-   .module('feedz',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui.router',
+   .module('feedz',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui.router', 'ngRoute',
    'ngMaterial', 'ngMdIcons',
     'feedz.appController', 'feedz.loginController', 'feedz.registerController', 'feedz.dashController', 'feedz.feedsController',
     'feedz.userFactory'])
@@ -11,8 +11,8 @@ const Feedz = angular
       .accentPalette('green');
   })
 
-  Feedz.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('root')
+  Feedz.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  $urlRouterProvider.otherwise('login')
   // GitHub auth
   // $authProvider.github({
   //   name: 'github',
@@ -29,20 +29,32 @@ const Feedz = angular
   //   authorizationEndpoint: 'https://github.com/login/oauth/authorize'
   // })
   $stateProvider
-    .state('root', {
-      url: '/',
-      templateUrl: '/build/home.html'
+    .state('login', {
+      url: '/login',
+      templateUrl: '/build/login.html'
     })
     .state('dash', {
       url: '/dash',
       templateUrl: '/build/dashIndex.html',
       controller: 'dashController'
     })
-    .state('feeds', {
-      url: '/feeds',
-      templateUrl: 'build/feedsIndex.html',
+    .state('dash.home', {
+      url: '/dash/home',
+      templateUrl: '/build/dashIndex.html',
+      controller: 'dashController'
+    })
+    .state('dash.feeds', {
+      url: '/dash/feeds',
+      templateUrl: '/build/feedsIndex.html',
       controller: 'feedsController'
     })
+    .state('logout', {
+		  url: '/logout',
+		  controller: function($scope, $route) {
+			$route.reload()
+		  }
+    })
+
     // .state('dash.repoSelect', {
     //   url: '/reposelect',
     //   templateUrl: 'build/repo-select.html',
@@ -84,6 +96,11 @@ Feedz.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog
       link : '/#/posts',
       title: 'Posts',
       icon: 'message'
+    },
+    {
+      link : '/#/logout',
+      title: 'Logout',
+      icon: 'logout'
     }
   ];
 

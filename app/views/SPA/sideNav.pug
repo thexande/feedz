@@ -1,0 +1,21 @@
+extends root
+block sideNav
+  md-sidenav.md-sidenav-left.md-whiteframe-z2(layout='column', md-component-id='left', md-is-locked-open="$mdMedia('gt-md')")
+    md-toolbar.md-tall.md-hue-2
+      span(flex='')
+      .md-toolbar-tools-bottom.inset(layout='column')
+        user-avatar
+        span
+        div Firstname Lastname
+        div email@domainname.com
+    md-list
+      md-item(ng-repeat='item in menu')
+        a(href="{{item.link}}")
+          md-item-content(md-ink-ripple='', layout='row', layout-align='start center')
+            .inset
+              ng-md-icon(icon='{{item.icon}}')
+            .inset
+              | {{item.title}}
+              
+  .relative(layout='column', layout-fill='', role='main' ui-view="")
+    block dashPanel

@@ -3,5 +3,4 @@
     $scope.test = () => {
       console.log('wootwoot')
     }
-
   })

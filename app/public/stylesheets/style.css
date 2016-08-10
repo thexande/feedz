@@ -1,3 +1,8 @@
+body {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
 md-no-animations,
 md-dialog.md-transition-in,
 md-dialog.md-transition-out,

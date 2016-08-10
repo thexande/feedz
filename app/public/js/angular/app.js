@@ -1,6 +1,6 @@
 const Feedz = angular
    .module('feedz',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui.router',
-    'feedz.appController', 'feedz.loginController', 'feedz.registerController',
+    'feedz.appController', 'feedz.loginController', 'feedz.registerController', 'feedz.dashController', 'feedz.feedsController',
     'feedz.userFactory'])
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -30,19 +30,18 @@ const Feedz = angular
   $stateProvider
     .state('root', {
       url: '/',
-      templateUrl: '/build/root.html'
+      templateUrl: '/build/home.html'
     })
-    .state('login', {
-      url: '/login',
-      templateUrl: '/build/login.html',
-      controller: 'appController'
-
+    .state('dash', {
+      url: '/dash',
+      templateUrl: '/build/dashIndex.html',
+      controller: 'dashController'
     })
-    // .state('dash', {
-    //   url: '/dash',
-    //   templateUrl: 'build/dash.html',
-    //   controller: 'dashController'
-    // })
+    .state('feeds', {
+      url: '/feeds',
+      templateUrl: 'build/feedsIndex.html',
+      controller: 'feedsController'
+    })
     // .state('dash.repoSelect', {
     //   url: '/reposelect',
     //   templateUrl: 'build/repo-select.html',

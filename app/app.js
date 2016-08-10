@@ -6,6 +6,9 @@ const bodyParser = require('body-parser')
 const spa = require('./routes/spa')
 const jsonAPI = require('./routes/routeExport')
 const userRoute = require('./routes/jsonApi/user')
+const passport = require('passport')
+const session = require('express-session')
+
 require('dotenv').config()
 const app = express()
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +24,15 @@ for(let route in jsonAPI){
 }
 app.use('/', spa)
 app.use('/nm', express.static(__dirname + '/../node_modules/'))
+
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: 'secret'
+}));
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 404

@@ -9,8 +9,8 @@ angular
     // @see <md-dialog md-theme="login">...</md-dialog>
   
     $mdThemingProvider.theme('login')
-      .primaryPalette('brown')
-      .accentPalette('yellow');
+      .primaryPalette('indigo')
+      .accentPalette('green');
     
   })
   .controller('appController',function($scope,$mdDialog){
@@ -22,6 +22,7 @@ angular
         clickOutsideToClose:true
       });      
     }  
+
   })
   .controller('LoginController', function($scope, $mdDialog, $log) {
     $scope.cancel = function() {
@@ -29,6 +30,29 @@ angular
     };
     $scope.login = function() {
       $log.debug("login()...");
+      $mdDialog.hide();
+    };
+    $scope.user = {
+      company: 'Google, Inc.',
+      email: 'ThomasBurleson@Gmail.com',
+      phone: ''
+    };
+        $scope.showRegister = function() {
+
+        $mdDialog.show({
+        controller: 'registerController',
+        templateUrl: '/build/registerModal.html',
+        parent: angular.element(document.body),
+        clickOutsideToClose:true
+      });      
+    }  
+  })
+  .controller('registerController', function($scope, $mdDialog, $log) {
+    $scope.cancel = function() {
+      $mdDialog.hide();
+    };
+    $scope.register = function() {
+      $log.debug("register()...");
       $mdDialog.hide();
     };
     $scope.user = {

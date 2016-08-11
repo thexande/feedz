@@ -4,10 +4,10 @@ const Feedz = angular
    .module('feedz',['ngMaterial', 'ngMessages', 
    'material.svgAssetsCache', 'ui.router', 'ngRoute',
    'ngMaterial', 'ngMdIcons', 'LocalStorageModule', 'feedz.localStorageFactory',
-    'feedz.appController', 'feedz.loginController', 
+    'feedz.appController', 'feedz.loginController', 'feedz.subFeedModalController',
     'feedz.registerController', 'feedz.dashController', 
     'feedz.subFeedController','feedz.dashRootController',
-    'feedz.AppCtrl',
+    'feedz.AppCtrl', 
     'feedz.userFactory', 'feedz.subFeedFactory'])
   // md=theming configuration
   Feedz.config(function($mdThemingProvider) {

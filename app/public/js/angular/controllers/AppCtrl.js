@@ -75,16 +75,5 @@ function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, localStorageFactory){
     });
   };
   
-  $scope.showAdd = function(ev) {
-    $mdDialog.show({
-      controller: DialogController,
-      templateUrl: '/build/addSubFeedModal.html',
-      targetEvent: ev,
-    })
-    .then(function(answer) {
-      $scope.alert = 'You said the information was "' + answer + '".';
-    }, function() {
-      $scope.alert = 'You cancelled the dialog.';
-    });
-  };
+
 }]);

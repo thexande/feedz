@@ -1,5 +1,12 @@
   angular.module('feedz.subFeedController', [])
-    .controller('feedz.subFeedModalController', ($scope, $mdDialog, userFactory) => {
+    .controller('feedz.subFeedModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory) => {
+      $scope.createNewSubFeed = function() {
+        var userData = localStorageFactory.getFromLocalStorage('user_data')
+        subFeedFactory.createSubFeed("woot").then((subFeedResponse) => {
+          console.log(subFeedResponse)
+        })
+
+      }
       $scope.hide = function() {
         $mdDialog.hide();
       };

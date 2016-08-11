@@ -7,19 +7,12 @@ const passport = require('passport')
 
 router.route('/')
   .get((req, res, next) => {
-    subFeed.getAllSubFeeds().then((allSubFeeds) => {
-      res.json(allSubFeeds)
-    })
+    subFeed.getAllSubFeeds().then((allSubFeeds) => { res.json(allSubFeeds) })
   })
-  .post((req, res, next) => {
-    console.log(req.body)
-    next()
-  },
-    passport.authenticate('bearer', {session: false}), (req, res, next) => {
+  .post(passport.authenticate('bearer', {session: false}), (req, res, next) => {
       let subfeed = req.body.subfeedData
       subfeed.created_by_user = req.body.user.id
-      subFeed.createSubFeed(subfeed).then((resp) => {res.json(resp)})
+      subFeed.createSubFeed(subfeed).then((resp) => { res.json(resp) })
   })
-
 
 module.exports = router

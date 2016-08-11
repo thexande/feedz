@@ -66,6 +66,10 @@ const Feedz = angular
     .state('dash.feeds', {
       url: '/feeds',
       templateUrl: '/build/feedsIndex.html',
+      resolve: {
+        getSubFeeds: ($http) => { return $http({ method: 'get', url: '/f' })
+        }
+      },
       controller: 'subFeedController'
     })
     .state('dash.post', {

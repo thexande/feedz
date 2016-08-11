@@ -18,7 +18,8 @@
         $mdDialog.hide(answer);
       };
     })
-    .controller('subFeedController', function($scope, $mdDialog, userFactory) {
+    .controller('subFeedController', function($scope, getSubFeeds, $mdDialog, userFactory) {
+      console.log("subfeeds here", getSubFeeds)
       $scope.showAdd = function(ev) {
         $mdDialog.show({
             controller: 'feedz.subFeedModalController',

@@ -1,15 +1,23 @@
 const Feedz = angular
    .module('feedz',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui.router', 'ngRoute',
-   'ngMaterial', 'ngMdIcons',
+   'ngMaterial', 'ngMdIcons', 'LocalStorageModule',
     'feedz.appController', 'feedz.loginController', 'feedz.registerController', 'feedz.dashController', 'feedz.feedsController',
-    'feedz.userFactory'])
-  .config(function($mdThemingProvider) {
+    'feedz.userFactory', 'feedz.localStorageFactory'])
+  // md=theming configuration
+  Feedz.config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('green')
     $mdThemingProvider.theme('login')
       .primaryPalette('indigo')
       .accentPalette('green');
   })
+  // local stroage config
+  Feedz.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('Feedz')
+    .setStorageType('localStorage')
+    .setNotify(true, true)
+})
 
   Feedz.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('login')
@@ -60,8 +68,8 @@ const Feedz = angular
     })
     .state('logout', {
 		  url: '/logout',
-		  controller: function($scope, $route) {
-			$route.reload()
+		  controller: function($scope, $route, $state) {
+          $state.go('login')
 		  }
     })
 

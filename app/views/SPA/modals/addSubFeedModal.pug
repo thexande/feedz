@@ -1,19 +1,19 @@
 md-dialog(aria-label='Mango (Fruit)')
   md-content.md-padding
     h2 Now Adding a New Sub Feed
-    form(name='userForm')
+    form(name='userForm', ng-submit="createNewSubFeed()")
       md-input-container(flex='')
         label Sub Feed Title
-        input(ng-model='subfeed.title')
+        input(ng-model='subfeed.feed_title')
       div(layout='', layout-sm='column')
         md-input-container(flex='')
           label Sub Feed Indentifier ( ex. /f/yourId )
-          input(ng-model='user.city')
+          input(ng-model='subfeed.identifier')
 
       md-input-container(flex='')
         label Biography
-        textarea(ng-model='user.biography', columns='1', md-maxlength='150')
+        textarea(ng-model='subfeed.content', columns='1', md-maxlength='150')
   .md-actions(layout='row')
     span(flex='')
     md-button(ng-click="answer(\'not useful\')")  Cancel
-    md-button.md-primary(ng-click="answer(\'useful\')")  Save
+    md-button.md-primary(ng-click="createNewSubFeed()")  Save

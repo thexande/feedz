@@ -6,9 +6,9 @@ const Feedz = angular
    'ngMaterial', 'ngMdIcons', 'LocalStorageModule', 'feedz.localStorageFactory',
     'feedz.appController', 'feedz.loginController', 
     'feedz.registerController', 'feedz.dashController', 
-    'feedz.feedsController','feedz.dashRootController',
+    'feedz.subFeedController','feedz.dashRootController',
     'feedz.AppCtrl',
-    'feedz.userFactory'])
+    'feedz.userFactory', 'feedz.subFeedFactory'])
   // md=theming configuration
   Feedz.config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -66,7 +66,7 @@ const Feedz = angular
     .state('dash.feeds', {
       url: '/feeds',
       templateUrl: '/build/feedsIndex.html',
-      controller: 'feedsController'
+      controller: 'subFeedController'
     })
     .state('dash.post', {
       url: '/post',

@@ -12,16 +12,13 @@ module.exports = (passport) => {
       passwordField: 'password',
       session: true },
     (username, password, done) => {
-      console.log(username)
-      console.log(password)
         process.nextTick(() => {
           userModel.checkUserLogin({username})
             .catch((e) => done(null, false))
             .then((collection) => {
-              console.log(collection)
             if(collection.length > 0){
               if(bcrypt.compareSync(password, collection[0].password)){
-                return done(null, { status: true, token: collection[0].token})
+                return done(null, collection[0])
               } else {
                 return done(null, false)
               }
@@ -35,8 +32,12 @@ module.exports = (passport) => {
 )
 passport.use(new BearerStrategy(
   (token, done) => {
+    userModel.checkUserToken(token).then((user) => {
 
+      console.log("in bearer strategy")
+      console.log(user)
       return done(null, user, { scope: 'all' });
+    })
 
   }
 ))

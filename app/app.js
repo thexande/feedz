@@ -19,8 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, '/public')))
 for(let route in jsonAPI){
   if(jsonAPI.hasOwnProperty(route)){
+    console.log(route)
     let routeString = '/' +   route.toString()
-    app.use('/users', jsonAPI[route])
+    app.use(routeString, jsonAPI[route])
   }
 }
 app.use('/', spa)

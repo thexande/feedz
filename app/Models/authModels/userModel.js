@@ -23,4 +23,7 @@ module.exports = class userModel {
   checkUserLogin(user) {
     return db.knex('feedz_users').where(user)
   }
+  checkUserToken(token) {
+    return db.knex('feedz_users').where({token})
+  }
 }

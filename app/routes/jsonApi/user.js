@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const path = require('path')
 const userModelClass = require('../../Models/authModels/userModel')
 const userModel = new userModelClass
@@ -31,9 +31,9 @@ router.route('/login')
         status: 'Login successful!',
         user: user,
         info: info
-      });
-    });
-  })(req, res, next);
+      })
+    })
+  })(req, res, next)
     })
 router.route('/register')
     .post((req, res, next) => {
@@ -41,4 +41,4 @@ router.route('/register')
         userModel.createUserIfNotExists(req.body).then((userResponse) => {res.json(userResponse)})
 
     })
-module.exports = router;
+module.exports = router

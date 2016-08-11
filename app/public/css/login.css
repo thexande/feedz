@@ -32,8 +32,10 @@
   width: 416px;
   min-width: 416px;
   max-width: 416px;
+  background: #4CAF50; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4CAF50 , #00BCD4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4CAF50 , #00BCD4);
   height: 100%;
-  background: #FFFFFF;
 }
 #login-v2 #login-v2-form-wrapper #login-v2-form {
   padding: 128px 48px 48px 48px;
@@ -119,6 +121,7 @@
 #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.google md-icon, #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.facebook md-icon {
   color: #FFFFFF;
   margin: 0 8px 0 0;
+  
 }
 #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.google {
   background-color: #D73D32;
@@ -148,4 +151,8 @@
   #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.google, #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.facebook {
     width: 80%;
   }
+}
+
+.banner_gradient {
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

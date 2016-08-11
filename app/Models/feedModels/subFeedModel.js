@@ -8,7 +8,7 @@ module.exports = class subFeedModel {
   getAllSubFeeds() {
     return db.knex('feedz_sub_feeds')
   }
-  createSubFeed(subFeed) {
-    return db.knex('feedz_sub_feeds').insert()
+  createSubFeed(subfeed) {
+    return db.knex('feedz_sub_feeds').insert(subfeed)
   }
 }

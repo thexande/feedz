@@ -5,6 +5,7 @@ return Promise.all([
     table.string('username')
     table.string('password')
     table.string('email')
+    table.string('token')
   }),
   knex.schema.createTable('feedz_sub_feeds', function(table){
     table.increments('id')

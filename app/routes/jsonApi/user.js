@@ -28,7 +28,9 @@ router.route('/login')
         });
       }
       res.status(200).json({
-        status: 'Login successful!'
+        status: 'Login successful!',
+        user: user,
+        info: info
       });
     });
   })(req, res, next);

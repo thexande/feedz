@@ -1,5 +1,6 @@
 const db = require('../../config/db/knex/knexConfig')
 const bcrypt = require('bcrypt')
+const randToken = require('rand-token')
 module.exports = class userModel {
   constructor() {}
   getUser() {
@@ -13,7 +14,8 @@ module.exports = class userModel {
           return db.knex('feedz_users').insert({
             username: user.username, 
             password: bcrypt.hashSync(user.password, 10), 
-            email:user.email
+            email:user.email,
+            token: randToken.generate(16)
           })
         }
       })

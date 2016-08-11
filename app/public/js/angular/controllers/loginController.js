@@ -3,12 +3,11 @@
     $scope.login = function() {
       userFactory.userLogin($scope.user).then((userLoginStatus) => {
         localStorageFactory.setToLocalStorage('user_data', userLoginStatus.data.user)
-              if(userLoginStatus.status === 200){
-                $state.go('dash.home')
-              } else {
-                console.log("wrong password")
-              }
-          
+          if(userLoginStatus.status === 200){
+            $state.go('dash.home')
+          } else {
+            console.log("wrong password")
+          }
       })
     }  
   })

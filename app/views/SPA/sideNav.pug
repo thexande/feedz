@@ -5,8 +5,8 @@ md-sidenav.md-sidenav-left.md-whiteframe-z2(layout='column', md-component-id='le
     .md-toolbar-tools-bottom.inset(layout='column')
       user-avatar
       span
-      div Firstname Lastname
-      div email@domainname.com
+      div {{ userData.username }}
+      div {{ userData.email }}
   md-list
     md-item(ng-repeat='item in menu')
       a(href="{{item.link}}")
@@ -15,5 +15,5 @@ md-sidenav.md-sidenav-left.md-whiteframe-z2(layout='column', md-component-id='le
             ng-md-icon(icon='{{item.icon}}')
           .inset
             | {{item.title}}
-            
+
 .relative(layout='column', layout-fill='', role='main' ui-view="")

@@ -2,7 +2,7 @@
     .controller('feedz.subFeedModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory) => {
       $scope.createNewSubFeed = function() {
         var userData = localStorageFactory.getFromLocalStorage('user_data')
-        subFeedFactory.createSubFeed("woot").then((subFeedResponse) => {
+        subFeedFactory.createSubFeed($scope.subfeed).then((subFeedResponse) => {
           console.log(subFeedResponse)
         })
 
@@ -18,11 +18,6 @@
       };
     })
     .controller('subFeedController', function($scope, $mdDialog, userFactory) {
-      console.log("in feeds controller")
-      $scope.createNewSubFeed = () => {
-        // console.log($scope.subfeed)
-        console.log("woot")
-      }
       $scope.showAdd = function(ev) {
         $mdDialog.show({
             controller: 'feedz.subFeedModalController',

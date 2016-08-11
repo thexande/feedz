@@ -18,7 +18,7 @@ router.route('/')
     passport.authenticate('bearer', {session: false}), (req, res, next) => {
       console.log(req.user)
     // subFeed.createSubFeed(req.body).then((resp) => {console.log(resp)})
-    res.json('working')
+    res.json(req.body)
   })
 
 

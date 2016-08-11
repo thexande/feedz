@@ -46,7 +46,7 @@ app.use(session({
   saveUninitialized: true,
   secret: 'secret'
 }))
-require('./Controllers/authControllers/passportLocalController.js')(passport)
+require('./Controllers/authControllers/passportStrategyController.js')(passport)
 app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 404

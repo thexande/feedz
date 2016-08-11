@@ -33,13 +33,15 @@ module.exports = (passport) => {
 )
 passport.use(new BearerStrategy(
   (token, done) => {
+    console.log("in bearer")
     userModel.checkUserToken(token).then((user) => {
-
-      console.log("in bearer strategy")
       console.log(user)
-      return done(null, user, { scope: 'all' });
+      if(user.length == 0){
+        return done(null, false)
+      } else {
+        return done(null, user, { scope: 'all' });
+      }
     })
-
   }
 ))
 

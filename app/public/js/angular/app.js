@@ -1,3 +1,5 @@
+'use strict'
+
 const Feedz = angular
    .module('feedz',['ngMaterial', 'ngMessages', 
    'material.svgAssetsCache', 'ui.router', 'ngRoute',

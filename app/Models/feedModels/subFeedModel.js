@@ -1,3 +1,5 @@
+'use strict'
+
 const db = require('../../config/db/knex/knexConfig')
 const bcrypt = require('bcrypt')
 module.exports = class subFeedModel {

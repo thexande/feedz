@@ -13,5 +13,10 @@ router.route('/')
 router.route('/login')
     .post((req, res, next) => {res.json(req.body)})
 router.route('/register')
-    .post((req, res, next) => res.json(req.body))
+    .post((req, res, next) => {
+        console.log(req.body)
+        userModel.createUserIfNotExists(req.body)
+        .then((userResponse) => {res.json(userResponse)})
+
+    })
 module.exports = router;

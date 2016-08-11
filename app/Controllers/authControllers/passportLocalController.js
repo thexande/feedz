@@ -4,6 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const userModelClass = require('../../Models/authModels/userModel')
 const userModel = new userModelClass
 
+
 passport.use(
   new LocalStrategy({
       usernameField: 'username',

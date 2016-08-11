@@ -2,7 +2,7 @@
 #login-v2(layout='row', layout-align='start')
   #login-v2-intro(flex='', hide='', show-gt-sm='')
     .logo.md-accent-bg
-      span F
+      span#login_title FEEDZ
     .title(translate='LOGIN_V2.INTRO_TITLE') title here
     .description(translate='LOGIN_V2.INTRO_DESCRIPTION') intro here
   #login-v2-form-wrapper.flex-scrollable.md-whiteframe-8dp(ms-scroll='')
@@ -10,19 +10,18 @@
       .title(translate='LOGIN_V2.TITLE') Please Login to Feedz
       form(name='loginForm', novalidate='', ng-submit="login()")
         md-input-container.md-block(md-no-float='')
-          input(type='text', name='username', ng-model='user.username', placeholder='username', translate='', translate-attr-placeholder='LOGIN_V2.username', required='')
-          div(ng-messages='loginForm.email.$error', role='alert', multiple='')
+          input(name='username', ng-model='user.username', placeholder='Username', translate='', translate-attr-placeholder='REGISTER_V2.NAME', required='')
+          div(ng-messages='registerForm.username.$error', role='alert')
             div(ng-message='required')
-              span(translate='LOGIN_V2.ERRORS.EMAIL_REQUIRED') Email field is required
-            div(ng-message='pattern')
-              span(translate='LOGIN_V2.ERRORS.EMAIL_MUST_VALID') Email must be a valid e-mail address
+              span(translate='REGISTER_V2.ERRORS.USERNAME_REQUIRED') Username field is required
+
         md-input-container.md-block(md-no-float='')
           input(type='password', name='password', ng-model='user.password', placeholder='Password', translate='', translate-attr-placeholder='LOGIN_V2.PASSWORD', required='')
           div(ng-messages='loginForm.password.$error', role='alert')
             div(ng-message='required')
-              span(translate='LOGIN_V2.ERRORS.PASSWORD_REQUIRED') Password field is required
-          div(layout='column', layout-align='start center')
-            md-button.md-raised.indigo.white-text(type="submit") Login
+              span(translate='REGISTER_V2.ERRORS.PASSWORD_CONFIRM_REQUIRED') Password (Confirm) field is required
+        div(layout='column', layout-align='start center')
+          md-button.md-raised.indigo.white-text(type="submit") login
       //- .separator
       //-   span.text(translate='LOGIN_V2.OR') OR
       //- div(layout='column', layout-align='start center')

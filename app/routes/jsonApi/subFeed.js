@@ -10,6 +10,9 @@ router.route('/')
       console.log(allSubFeeds)
       res.json(allSubFeeds)
     })
+    .post((req, res, next) => {
+      subFeed.createSubFeed(req.body).then((resp) => {console.log(resp)})
+    })
   })
 
 module.exports = router

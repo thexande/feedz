@@ -4,14 +4,14 @@ angular.module('feedz.userFactory', [])
     userLogin: (user) => {
       return $http({
         method: 'post',
-        url: '/users/login',
+        url: '/user/login',
         data: user
       })
     },
     registerUser: (user) => {
       return $http({
         method: 'post',
-        url: '/users/register',
+        url: '/user/register',
         data: user
       })
     }

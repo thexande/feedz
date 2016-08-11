@@ -15,8 +15,7 @@ router.route('/login')
 router.route('/register')
     .post((req, res, next) => {
         console.log(req.body)
-        userModel.createUserIfNotExists(req.body)
-        .then((userResponse) => {res.json(userResponse)})
+        userModel.createUserIfNotExists(req.body).then((userResponse) => {res.json(userResponse)})
 
     })
 module.exports = router;

@@ -31,7 +31,8 @@ const Feedz = angular
   $stateProvider
     .state('login', {
       url: '/login',
-      templateUrl: '/build/login.html'
+      templateUrl: '/build/login.html',
+      controller: 'loginController'
     })
     .state('register', {
       url: '/register',

@@ -10,6 +10,8 @@ const passport = require('passport')
 const session = require('express-session')
 require('dotenv').config()
 const app = express()
+ app.use(passport.initialize());
+app.use(passport.session());
 app.set('views', path.join(__dirname, 'views'));
 app.use(logger('dev'))
 app.use(bodyParser.json())
@@ -27,9 +29,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   secret: 'secret'
-}));
-app.use(passport.initialize())
-app.use(passport.session())
+}))
+require('./Controllers/authControllers/passportLocalController.js')(passport)
 app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 404

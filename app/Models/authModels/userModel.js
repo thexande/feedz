@@ -12,10 +12,13 @@ module.exports = class userModel {
         if(userResponse.length == 0){
           return db.knex('feedz_users').insert({
             username: user.username, 
-            password: user.password, 
+            password: bcrypt.hashSync(user.password, 10), 
             email:user.email
           })
         }
       })
+  }
+  checkUserLogin(user) {
+    return db.knex('feedz_users').where(user)
   }
 }

@@ -3,6 +3,7 @@
       $scope.createNewSubFeed = function() {
         var userData = localStorageFactory.getFromLocalStorage('user_data')
         subFeedFactory.createSubFeed($scope.subfeed, userData).then((subFeedResponse) => {
+          
           console.log(subFeedResponse)
           $mdDialog.cancel()
         })

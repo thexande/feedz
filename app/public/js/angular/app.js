@@ -1,7 +1,8 @@
 'use strict'
 
 const Feedz = angular
-   .module('feedz', ['ngMaterial', 
+   .module('feedz', 
+    ['ngMaterial', 
       'ngMessages',
       'material.svgAssetsCache',
       'ui.router', 
@@ -9,7 +10,7 @@ const Feedz = angular
       'ngMaterial', 
       'ngMdIcons', 
       'LocalStorageModule', 
-      'feedz.localStorageFactory',
+      // controllers
       'feedz.appController', 
       'feedz.loginController', 
       'feedz.subFeedModalController',
@@ -23,9 +24,12 @@ const Feedz = angular
       'feedz.subFeedModalController', 
       'feedz.commentModalController', 
       'feedz.postModalController',
+      // factories
+      'feedz.localStorageFactory',
       'feedz.userFactory', 
       'feedz.subFeedFactory', 
-      'feedz.postFactory'])
+      'feedz.postFactory',
+      'feedz.commentFactory'])
 
   // md=theming configuration
   Feedz.config(function($mdThemingProvider) {

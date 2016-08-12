@@ -3,7 +3,7 @@
     
     $scope.feedName = getFeed.feed_name
     $scope.feed = getFeedById.data
-
+    $scope.feedPristine = getFeedById.data
     $scope.feedColumnLength = $scope.feed.length / 3
     $scope.feedColumns = []
     
@@ -17,7 +17,9 @@
       $scope.feedColumns.pop()
     }
     console.log($scope.feedColumns)
-    console.log("in post controller")
+    $scope.feeds = [].concat.apply([], $scope.feedColumns)
+    console.log($scope.feeds)
+
     $scope.loadPost = (post_id) => {
       $state.go('dash.showPost', { feed_name: getFeed, post_id })
     }

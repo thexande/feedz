@@ -5,12 +5,12 @@ md-fab-speed-dial.md-fling.md-fab-bottom-right(md-direction='up')
 			md-tooltip(md-direction='top') Menu
 			md-icon(md-svg-src='img/icons/menu.svg')
 	md-fab-actions
-		md-button.md-fab.md-raised.md-mini(aria-label='New Post', ng-click="showAddPost($event)")
+		md-button.md-fab.md-raised.md-mini.md-warn(aria-label='New Post', ng-click="showAddPost($event)")
 			md-tooltip(md-direction='left') New Post
-			md-icon(md-svg-src='img/icons/twitter.svg')
-		md-button.md-fab.md-raised.md-mini(aria-label='New SubFeed', ng-click="showAddSubFeed($event)")
+			ng-md-icon(icon="mode_edit")
+		md-button.md-fab.md-raised.md-mini.md-primary(aria-label='New SubFeed', ng-click="showAddSubFeed($event)")
 			md-tooltip(md-direction='left') New SubFeed
-			md-icon(md-svg-src='img/icons/hangout.svg')
+			ng-md-icon(icon="create_new_folder")
 md-toolbar(ng-show='!showSearch')
 	.md-toolbar-tools
 		md-button(ng-click="toggleSidenav('left')", hide-gt-md='', aria-label='Menu')

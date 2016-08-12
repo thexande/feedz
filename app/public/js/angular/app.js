@@ -7,7 +7,7 @@ const Feedz = angular
     'feedz.appController', 'feedz.loginController', 'feedz.subFeedModalController',
     'feedz.registerController', 'feedz.dashController',
     'feedz.subFeedController','feedz.dashRootController', 'feedz.postController',
-    'feedz.AppCtrl',
+    'feedz.AppCtrl', 'feedz.showPostController',
     'feedz.userFactory', 'feedz.subFeedFactory', 'feedz.postFactory'])
   // md=theming configuration
   Feedz.config(function($mdThemingProvider) {
@@ -90,18 +90,18 @@ const Feedz = angular
 
     .state('dash.showPost', {
       url: '/showPost',
-      params: {post_id: null, post_name: null},
+      params: { feed_id: null, post_id: null },
       resolve:  {
-        getFeed: ($stateParams) => $stateParams,
-        getFeedById: ($stateParams, $http) => {
+        getPost: ($stateParams) => $stateParams,
+        getPostById: ($stateParams, $http) => {
           return $http({
             method: 'get',
-            url: '/f/' + $stateParams.post_id
+            url:`/f/${feed_id}/${post_id}`
           })
         }
       },
       templateUrl:  '/build/showPostIndex.html',
-      controller: 'showPostostController'
+      controller: 'showPostController'
     })
     .state('logout', {
 		  url: '/logout',

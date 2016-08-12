@@ -43,7 +43,7 @@ const Feedz = angular
   //   authorizationEndpoint: 'https://github.com/login/oauth/authorize'
   // })
   $stateProvider
-    .state('login', {
+  .state('login', {
       url: '/login',
       templateUrl: '/build/login.html',
       controller: 'loginController'

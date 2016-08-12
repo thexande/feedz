@@ -18,9 +18,8 @@ return Promise.all([
     table.increments('id')
     table.integer('created_by_user').references("feedz_users.id")
     table.integer('belongs_to_sub_feed').references("feedz_sub_feeds.id")
-    table.string('feed_content', 1000)
-    table.string('feed_title')
-    table.string('feed_identifier')
+    table.string('post_content', 1000)
+    table.string('post_title')
   })
 ])}
 exports.down = function(knex, Promise) {}

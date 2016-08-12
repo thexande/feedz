@@ -94,7 +94,6 @@
         $mdDialog.show({
             controller: 'feedz.postModalController',
             templateUrl: '/build/addPostModal.html',
-            windowClass: 'large-Modal',
             targetEvent: ev,
           })
           .then(function(answer) {

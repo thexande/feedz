@@ -4,10 +4,13 @@ const router = express.Router();
 const path = require('path')
 const subFeedModelClass = require('../../Models/feedModels/subFeedModel')
 const subFeed = new subFeedModelClass
+const postModelClass = require('../../Models/postModels/postModel')
+const posts = new postModelClass
 const passport = require('passport')
 
-router.route('/:id').get((req, res, next) => {
-  subFeed.getFeedById(req.params.id).then((feed) => {res.json(feed)})  
+router.route('/:id')
+  .get((req, res, next) => {
+  posts.getPostsBySubFeedId(req.params.id).then((posts) => res.json(posts))  
 })
 
 router.route('/')

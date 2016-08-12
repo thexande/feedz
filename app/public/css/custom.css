@@ -1,0 +1,20 @@
+
+.button-container {
+  padding-right: 46px !important;
+}
+
+.md-list-button-pad {
+  padding right: 10px !important;
+}
+.go_to {
+  background-color: blue !important;
+  padding-right: 10px;
+}
+.favorite {
+  background-color: pink !important;
+  padding-right: 10px;
+}
+.upvote {
+  background-color: green !important;
+  padding-right: 10px;
+}

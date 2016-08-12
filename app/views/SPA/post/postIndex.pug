@@ -51,16 +51,16 @@ md-content(flex='', md-scroll-y='')
 					md-card-content
 						h2 Latest Posts in Sub Feed
 						md-list
-							md-item(ng-repeat='feed in subFeeds | filter:search')
+							md-item(ng-repeat='post in feed | filter:search')
 								md-item-content
 									.md-tile-left.inset(hide-sm='')
 										user-avatar
 									.md-tile-content
-										h3 {{feed.feed_title}}
-										h4 {{feed.username}}
+										h3 {{post.post_title}}
+										h4 {{post.created_by_user}}
 										p
 									.md-tile-content
-										h3  {{feed.feed_content}}
+										h3  {{post.post_content}}
 									.md-tile-right.inset.button-container(hide-sm='')
 										md-button.md-fab
 											ng-md-icon(icon="favorite")

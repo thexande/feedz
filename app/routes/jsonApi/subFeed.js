@@ -6,6 +6,10 @@ const subFeedModelClass = require('../../Models/feedModels/subFeedModel')
 const subFeed = new subFeedModelClass
 const passport = require('passport')
 
+router.route('/:id').get((req, res, next) => {
+  subFeed.getFeedById(req.params.id).then((feed) => {res.json(feed)})  
+})
+
 router.route('/')
   .get((req, res, next) => {
     subFeed.getAllSubFeeds().then((allSubFeeds) => { res.json(allSubFeeds.rows) })
@@ -15,5 +19,7 @@ router.route('/')
       subfeed.created_by_user = req.body.user.id
       subFeed.createSubFeed(subfeed).then((resp) => { res.json(resp) })
   })
+
+
 
 module.exports = router

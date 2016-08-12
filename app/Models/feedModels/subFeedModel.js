@@ -11,4 +11,7 @@ module.exports = class subFeedModel {
   createSubFeed(subfeed) {
     return db.knex('feedz_sub_feeds').insert(subfeed)
   }
+  getFeedById(feed_id) {
+    return db.knex('feedz_sub_feeds').where('id', feed_id)
+  }
 }

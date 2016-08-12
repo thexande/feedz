@@ -74,9 +74,15 @@ const Feedz = angular
     })
     .state('dash.post', {
       url: '/post',
-      params: {post_id: null},
+      params: {feed_id: null},
       resolve:  {
-        getId: ($stateParams) => console.log("id here ",$stateParams)
+        getId: ($stateParams) => console.log("id here ",$stateParams),
+        getFeedById: ($stateParams, $http) => {
+          return $http({
+            method: 'get',
+            url: '/f/' + $stateParams.feed_id
+          })
+        }
       },
       templateUrl:  '/build/postIndex.html',
       controller: 'postController'

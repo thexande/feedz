@@ -1,5 +1,5 @@
 
-//- md-button.md-fab.md-fab-bottom-right(aria-label='Add', ng-click='showAdd($event)')
+md-button.md-fab.md-fab-top-left(aria-label='Add', ng-click='showAdd($event)')
 
 md-fab-speed-dial.md-fling.md-fab-bottom-right(md-direction='up')
 	md-fab-trigger
@@ -47,6 +47,8 @@ md-content(flex='', md-scroll-y='')
 		.inset(hide-sm='')
 		ng-switch.tabpanel-container(on='data.selectedIndex')
 			#tab1-content(role='tabpanel', aria-labelledby='tab1', ng-switch-when='0', md-swipe-left='next()', md-swipe-right='previous()', layout='row', layout-align='center center')
+				md-button.md-fab.md-fab-top-left(aria-label='Add', ui-sref="dash.feeds")
+					ng-md-icon(icon="arrow_back")
 				md-card(flex-gt-sm='70', flex-gt-md='70')
 					md-card-content
 						h2 Latest Posts in Sub Feed

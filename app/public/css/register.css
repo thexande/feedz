@@ -34,8 +34,8 @@
   max-width: 416px;
   height: 100%;
   background: #4CAF50; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #ff4081 , #00BCD4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #ff4081 , #00BCD4);
+  background: -webkit-linear-gradient(to left, #06564D , #7ECBC5); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #06564D , #7ECBC5);
 }
 #register-v2 #register-v2-form-wrapper #register-v2-form {
   padding: 128px 48px 48px 48px;

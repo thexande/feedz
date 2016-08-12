@@ -33,8 +33,8 @@
   min-width: 416px;
   max-width: 416px;
   background: #4CAF50; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #4CAF50 , #00BCD4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #4CAF50 , #00BCD4);
+  background: -webkit-linear-gradient(to left, #E7E9F8 , #E7E9F8); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #E7E9F8 , #E7E9F8);
   height: 100%;
 }
 #login-v2 #login-v2-form-wrapper #login-v2-form {
@@ -121,7 +121,7 @@
 #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.google md-icon, #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.facebook md-icon {
   color: #FFFFFF;
   margin: 0 8px 0 0;
-  
+
 }
 #login-v2 #login-v2-form-wrapper #login-v2-form .md-button.google {
   background-color: #D73D32;

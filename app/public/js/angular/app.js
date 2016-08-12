@@ -87,6 +87,22 @@ const Feedz = angular
       templateUrl:  '/build/postIndex.html',
       controller: 'postController'
     })
+
+    .state('dash.showPost', {
+      url: '/showPost',
+      params: {post_id: null, post_name: null},
+      resolve:  {
+        getFeed: ($stateParams) => $stateParams,
+        getFeedById: ($stateParams, $http) => {
+          return $http({
+            method: 'get',
+            url: '/f/' + $stateParams.post_id
+          })
+        }
+      },
+      templateUrl:  '/build/showPostIndex.html',
+      controller: 'showPostostController'
+    })
     .state('logout', {
 		  url: '/logout',
 		  controller: function($scope, $route, $state) {

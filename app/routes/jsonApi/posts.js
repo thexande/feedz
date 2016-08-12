@@ -14,7 +14,8 @@ router.route('/')
     post.createPost(req.body.post).then((createResponse) => res.json(createResponse))
   })
 
- 
+ router.route('/:id')
+  .get((req, res, next) => post.getAllCommentsByPostId(req.params.id).then((comments) => res.json(comments)))
 
 
 module.exports = router

@@ -4,7 +4,7 @@
     console.log(getPost)
 
 
-    $scope.postName = getPost.post_title
-    $scope.postComments = getPostById.data
+    $scope.feedName = getPost.feed_name.feed_name
+    $scope.postComments = getPostById.data.rows
     console.log("in show post controller")
   })

@@ -90,13 +90,13 @@ const Feedz = angular
 
     .state('dash.showPost', {
       url: '/showPost',
-      params: { feed_id: null, post_id: null },
+      params: { feed_name: null, post_id: null },
       resolve:  {
         getPost: ($stateParams) => $stateParams,
         getPostById: ($stateParams, $http) => {
           return $http({
             method: 'get',
-            url:`/f/${feed_id}/${post_id}`
+            url: '/posts/' + $stateParams.post_id
           })
         }
       },

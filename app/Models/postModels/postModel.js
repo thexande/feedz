@@ -15,4 +15,10 @@ module.exports = class subFeedModel {
   getPostsBySubFeedId(id) {
     return db.knex('feedz_posts').where('belongs_to_sub_feed', id)
   }
+  getAllCommentsByPostId(post_id) {
+    return db.knex.raw(`select fc.*, fp.post_title, fu.username from feedz_comments as fc 
+    join feedz_posts as fp on fc.post_id = fp.id
+    join feedz_users as fu on fc.created_by_user = fu.id
+    where fp.id = ${post_id}`)
+  }
 }

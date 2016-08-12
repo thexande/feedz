@@ -1,14 +1,14 @@
 'use strict'
 
 const Feedz = angular
-   .module('feedz',['ngMaterial', 'ngMessages', 
+   .module('feedz',['ngMaterial', 'ngMessages',
    'material.svgAssetsCache', 'ui.router', 'ngRoute',
    'ngMaterial', 'ngMdIcons', 'LocalStorageModule', 'feedz.localStorageFactory',
-    'feedz.appController', 'feedz.loginController', 'feedz.subFeedModalController', 
-    'feedz.registerController', 'feedz.dashController', 
+    'feedz.appController', 'feedz.loginController', 'feedz.subFeedModalController',
+    'feedz.registerController', 'feedz.dashController',
     'feedz.subFeedController','feedz.dashRootController', 'feedz.postController',
-    'feedz.AppCtrl', 
-    'feedz.userFactory', 'feedz.subFeedFactory'])
+    'feedz.AppCtrl',
+    'feedz.userFactory', 'feedz.subFeedFactory', 'feedz.postFactory'])
   // md=theming configuration
   Feedz.config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -122,7 +122,7 @@ Feedz.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
     { name: 'Copy', icon: 'copy' },
     { name: 'Print this page', icon: 'print' },
   ];
-  
+
   $scope.listItemClick = function($index) {
     var clickedItem = $scope.items[$index];
     $mdBottomSheet.hide(clickedItem);

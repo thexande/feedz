@@ -18,15 +18,16 @@
         $mdDialog.hide(answer);
       };
     })
-    .controller('feedz.postModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory) => {
-      // $scope.createNewPost = function() {
-      //   var userData = localStorageFactory.getFromLocalStorage('user_data')
-      //   PostFactory.createPost($scope.Post, userData).then((PostResponse) => {
-      //     console.log(PostResponse)
-      //     $mdDialog.cancel()
-      //   })
+    .controller('feedz.postModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory, subfeeds) => {
 
-      // }
+      $scope.subfeeds = subfeeds
+      $scope.createNewPost = function() {
+        var userData = localStorageFactory.getFromLocalStorage('user_data')
+        PostFactory.createPost($scope.Post, userData).then((PostResponse) => {
+          console.log(PostResponse)
+          $mdDialog.cancel()
+        })
+      }
       $scope.hide = function() {
         $mdDialog.hide();
       };
@@ -94,6 +95,9 @@
         $mdDialog.show({
             controller: 'feedz.postModalController',
             templateUrl: '/build/addPostModal.html',
+            locals: {
+              subfeeds: $scope.subFeeds
+            },
             targetEvent: ev,
           })
           .then(function(answer) {

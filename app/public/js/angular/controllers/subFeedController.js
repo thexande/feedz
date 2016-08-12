@@ -1,45 +1,4 @@
   angular.module('feedz.subFeedController', [])
-    .controller('feedz.subFeedModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory) => {
-      $scope.createNewSubFeed = function() {
-        var userData = localStorageFactory.getFromLocalStorage('user_data')
-        subFeedFactory.createSubFeed($scope.subfeed, userData).then((subFeedResponse) => {
-          
-          console.log(subFeedResponse)
-          $mdDialog.cancel()
-        })
-
-      }
-      $scope.hide = function() {
-        $mdDialog.hide();
-      };
-      $scope.cancel = function() {
-        $mdDialog.cancel();
-      };
-      $scope.answer = function(answer) {
-        $mdDialog.hide(answer);
-      };
-    })
-    .controller('feedz.postModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory, postFactory, subfeeds) => {
-
-      $scope.subfeeds = subfeeds
-      $scope.createNewPost = function() {
-        var userData = localStorageFactory.getFromLocalStorage('user_data')
-        postFactory.createPost($scope.post, userData).then((PostResponse) => {
-          console.log(PostResponse)
-          $mdDialog.cancel()
-        })
-      }
-      $scope.hide = function() {
-        $mdDialog.hide();
-      };
-      $scope.cancel = function() {
-        $mdDialog.cancel();
-      };
-      $scope.answer = function(answer) {
-        $mdDialog.hide(answer);
-      };
-    })
-
     .controller('subFeedController', function($state, $scope, getSubFeeds, $mdDialog, userFactory) {
       console.log("subfeeds here", getSubFeeds)
       $scope.subFeeds = getSubFeeds.data
@@ -86,11 +45,6 @@
             templateUrl: '/build/addSubFeedModal.html',
             targetEvent: ev,
           })
-          .then(function(answer) {
-            $scope.alert = 'You said the information was "' + answer + '".';
-          }, function() {
-            $scope.alert = 'You cancelled the dialog.';
-          });
       }
       $scope.showAddPost = function(ev) {
         $mdDialog.show({
@@ -101,10 +55,15 @@
             },
             targetEvent: ev,
           })
-          .then(function(answer) {
-            $scope.alert = 'You said the information was "' + answer + '".';
-          }, function() {
-            $scope.alert = 'You cancelled the dialog.';
-          });
+      }
+      $scope.showAddComment = function(post_id) {
+        $mdDialog.show({
+            controller: 'feedz.commentModalController',
+            templateUrl: '/build/addCommentModal.html',
+            // locals: {
+            //   subfeeds: $scope.subFeeds
+            // },
+            // targetEvent: ev,
+          })
       }
     })

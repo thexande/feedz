@@ -1,14 +1,32 @@
 'use strict'
 
 const Feedz = angular
-   .module('feedz',['ngMaterial', 'ngMessages',
-   'material.svgAssetsCache', 'ui.router', 'ngRoute',
-   'ngMaterial', 'ngMdIcons', 'LocalStorageModule', 'feedz.localStorageFactory',
-    'feedz.appController', 'feedz.loginController', 'feedz.subFeedModalController',
-    'feedz.registerController', 'feedz.dashController',
-    'feedz.subFeedController','feedz.dashRootController', 'feedz.postController',
-    'feedz.AppCtrl', 'feedz.showPostController',
-    'feedz.userFactory', 'feedz.subFeedFactory', 'feedz.postFactory'])
+   .module('feedz', ['ngMaterial', 
+      'ngMessages',
+      'material.svgAssetsCache',
+      'ui.router', 
+      'ngRoute',
+      'ngMaterial', 
+      'ngMdIcons', 
+      'LocalStorageModule', 
+      'feedz.localStorageFactory',
+      'feedz.appController', 
+      'feedz.loginController', 
+      'feedz.subFeedModalController',
+      'feedz.registerController', 
+      'feedz.dashController',
+      'feedz.subFeedController',
+      'feedz.dashRootController',
+      'feedz.postController',
+      'feedz.AppCtrl', 
+      'feedz.showPostController',
+      'feedz.subFeedModalController', 
+      'feedz.commentModalController', 
+      'feedz.postModalController',
+      'feedz.userFactory', 
+      'feedz.subFeedFactory', 
+      'feedz.postFactory'])
+
   // md=theming configuration
   Feedz.config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')

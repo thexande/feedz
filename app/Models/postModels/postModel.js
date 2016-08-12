@@ -10,7 +10,7 @@ module.exports = class subFeedModel {
   }
   createPost(post) {
     console.log(post)
-    return db.knex('feedz_posts').insert(post)
+    return db.knex('feedz_posts').insert(post).returning("*")
   }
   getPostsBySubFeedId(id) {
     return db.knex('feedz_posts').where('belongs_to_sub_feed', id)

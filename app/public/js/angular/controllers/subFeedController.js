@@ -18,9 +18,15 @@
         $mdDialog.hide(answer);
       };
     })
-    .controller('subFeedController', function($scope, getSubFeeds, $mdDialog, userFactory) {
+
+    .controller('subFeedController', function($state, $scope, getSubFeeds, $mdDialog, userFactory) {
       console.log("subfeeds here", getSubFeeds)
       $scope.subFeeds = getSubFeeds.data
+
+      $scope.loadPost = (post_id) => {
+        $state.go('dash.post', { post_id })
+      }
+
        $scope.activity = [
       {
         what: 'Brunch this weekejlkjljlkjnd?',

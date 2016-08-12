@@ -65,6 +65,7 @@ const Feedz = angular
     })
     .state('dash.feeds', {
       url: '/feeds',
+      params: {post_id: null},
       templateUrl: '/build/feedsIndex.html',
       resolve: {
         getSubFeeds: ($http) => $http({ method: 'get', url: '/f' })
@@ -73,6 +74,8 @@ const Feedz = angular
     })
     .state('dash.post', {
       url: '/post',
+      params: {post_id: null},
+      // resolve:  ($stateParams) => console.log("id here ",$stateParams),
       templateUrl:  '/build/postIndex.html',
       controller: 'postController'
     })

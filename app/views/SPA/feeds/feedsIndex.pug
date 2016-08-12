@@ -50,11 +50,11 @@ md-content(flex='', md-scroll-y='')
                   .md-tile-content
                     h3  {{feed.feed_content}}
                   .md-tile-right.inset.button-container(hide-sm='')
-                    md-button.md-list-button-pad.md-fab.favorite(aria-label='FAB')
+                    md-button.md-fab
                       ng-md-icon(icon="favorite")
-                    md-button.md-list-button-pad.md-fab.upvote(aria-label='FAB')
+                    md-button.md-fab.md-primary
                       ng-md-icon(icon="thumb_up")
-                    md-button.md-list-button-pad.md-fab.go-to(aria-label='FAB')
+                    md-button.md-fab.md-warn(ng-click="loadPost(feed.id)")
                       ng-md-icon(icon="arrow_forward")
                 md-divider(md-inset='', hide-sm='', ng-if='!$last')
                 md-divider(hide-gt-sm='', ng-if='!$last')

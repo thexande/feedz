@@ -47,7 +47,8 @@ md-content(flex='', md-scroll-y='')
                     h3 {{feed.feed_title}}
                     h4 {{feed.username}}
                     p
-                      | {{feed.feed_content}}
+                  .md-tile-content
+                    h3  {{feed.feed_content}}
                   .md-tile-right.inset.button-container(hide-sm='')
                     md-button.md-list-button-pad.md-fab.favorite(aria-label='FAB')
                       ng-md-icon(icon="favorite")

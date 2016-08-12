@@ -3,7 +3,6 @@ angular.module('feedz.AppCtrl', [])
 function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, localStorageFactory){
     // get user data for dashboard
     $scope.userData = localStorageFactory.getFromLocalStorage('user_data')
-    console.log($scope.userData)
 
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
@@ -18,11 +17,6 @@ function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, localStorageFactory){
       link : '/#/dash/feeds',
       title: 'Feedz',
       icon: 'group'
-    },
-    {
-      link : '/#/dash/post',
-      title: 'Posts',
-      icon: 'message'
     },
     {
       link : '/#/logout',

@@ -4,9 +4,9 @@ const Feedz = angular
    .module('feedz',['ngMaterial', 'ngMessages', 
    'material.svgAssetsCache', 'ui.router', 'ngRoute',
    'ngMaterial', 'ngMdIcons', 'LocalStorageModule', 'feedz.localStorageFactory',
-    'feedz.appController', 'feedz.loginController', 'feedz.subFeedModalController',
+    'feedz.appController', 'feedz.loginController', 'feedz.subFeedModalController', 
     'feedz.registerController', 'feedz.dashController', 
-    'feedz.subFeedController','feedz.dashRootController',
+    'feedz.subFeedController','feedz.dashRootController', 'feedz.postController',
     'feedz.AppCtrl', 
     'feedz.userFactory', 'feedz.subFeedFactory'])
   // md=theming configuration
@@ -67,14 +67,13 @@ const Feedz = angular
       url: '/feeds',
       templateUrl: '/build/feedsIndex.html',
       resolve: {
-        getSubFeeds: ($http) => { return $http({ method: 'get', url: '/f' })
-        }
+        getSubFeeds: ($http) => $http({ method: 'get', url: '/f' })
       },
       controller: 'subFeedController'
     })
     .state('dash.post', {
       url: '/post',
-      templateUrl: '/build/postIndex.html',
+      templateUrl:  '/build/postIndex.html',
       controller: 'postController'
     })
     .state('logout', {

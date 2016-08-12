@@ -18,6 +18,25 @@
         $mdDialog.hide(answer);
       };
     })
+    .controller('feedz.postModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory) => {
+      // $scope.createNewPost = function() {
+      //   var userData = localStorageFactory.getFromLocalStorage('user_data')
+      //   PostFactory.createPost($scope.Post, userData).then((PostResponse) => {
+      //     console.log(PostResponse)
+      //     $mdDialog.cancel()
+      //   })
+
+      // }
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+      $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+      };
+    })
 
     .controller('subFeedController', function($state, $scope, getSubFeeds, $mdDialog, userFactory) {
       console.log("subfeeds here", getSubFeeds)
@@ -59,10 +78,23 @@
         notes: "We should eat this: Grapefruit, Squash, Corn, and Tomatillo tacos"
       },
     ];
-      $scope.showAdd = function(ev) {
+      $scope.showAddSubFeed = function(ev) {
         $mdDialog.show({
             controller: 'feedz.subFeedModalController',
             templateUrl: '/build/addSubFeedModal.html',
+            targetEvent: ev,
+          })
+          .then(function(answer) {
+            $scope.alert = 'You said the information was "' + answer + '".';
+          }, function() {
+            $scope.alert = 'You cancelled the dialog.';
+          });
+      }
+      $scope.showAddPost = function(ev) {
+        $mdDialog.show({
+            controller: 'feedz.postModalController',
+            templateUrl: '/build/addPostModal.html',
+            windowClass: 'large-Modal',
             targetEvent: ev,
           })
           .then(function(answer) {

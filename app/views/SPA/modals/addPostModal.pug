@@ -1,0 +1,18 @@
+form(name='userForm' ng-submit="createNewSubFeed()")
+  md-dialog(aria-label='Mango (Fruit)')
+    md-content.md-padding
+      h2  Now adding a new Post.
+      div(layout='', layout-sm='column')
+      md-input-container(flex='')
+        label Sub Feed Title
+        input(ng-model='subfeed.feed_title')
+      md-input-container(flex='')
+        label Sub Feed ID ( ex "worldnews" for a new feed at '/f/worldnews')
+        input(ng-model='subfeed.feed_identifier')
+      md-input-container(flex='')
+        label Sub Feed Description
+        textarea(ng-model='subfeed.feed_content', columns='1', md-maxlength='150')
+    .md-actions(layout='row')
+      span(flex='')
+      md-button(ng-click="answer(\'not useful\')")  Cancel
+      md-button.md-primary(type="submit")  Save

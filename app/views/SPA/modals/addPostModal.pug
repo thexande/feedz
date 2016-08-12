@@ -15,7 +15,7 @@ form(name='userForm' ng-submit="createNewPost()")
       md-input-container(flex="")
         label Post SubFeed
         md-select(ng-model='post.belongs_to_sub_feed', placeholder="Select SubFeed")
-          md-option(ng-value='opt', ng-repeat='feed in subfeeds') {{ feed.feed_title }}
+          md-option(ng-value="feed.id", ng-repeat='feed in subfeeds') {{ feed.feed_title }}
     .md-actions(layout='row')
       span(flex='')
       md-button(ng-click="answer(\'not useful\')")  Cancel

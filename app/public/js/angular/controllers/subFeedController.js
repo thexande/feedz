@@ -18,12 +18,12 @@
         $mdDialog.hide(answer);
       };
     })
-    .controller('feedz.postModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory, subfeeds) => {
+    .controller('feedz.postModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory, postFactory, subfeeds) => {
 
       $scope.subfeeds = subfeeds
       $scope.createNewPost = function() {
         var userData = localStorageFactory.getFromLocalStorage('user_data')
-        PostFactory.createPost($scope.Post, userData).then((PostResponse) => {
+        postFactory.createPost($scope.post, userData).then((PostResponse) => {
           console.log(PostResponse)
           $mdDialog.cancel()
         })

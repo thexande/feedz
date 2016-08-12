@@ -11,7 +11,7 @@ router.route('/')
     post.getAllPosts().then((posts) => {res.json(posts)})
   })
   .post(passport.authenticate('bearer', {session: false}), (req, res, next) => {
-    post.createPost(req.body).then((createResponse) => res.sendStatus(200))
+    post.createPost(req.body.post).then((createResponse) => res.sendStatus(200))
   })
 
  

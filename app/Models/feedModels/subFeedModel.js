@@ -30,15 +30,12 @@ module.exports = class subFeedModel {
       }
     });
 
-    Post.forge({id:1}).fetch({withRelated: ['comments']}).then(function(users) {  
-    console.log(users);
-});
+    return Post.forge().fetch({withRelated: ['comments']})
 
     // var SubFeeds = db.bookshelf.Model.extend({
     //   tableName: 'feedz_sub_feeds',
     //   tags: () => this.hasMany(Tag)
     // })
  
-     console.log(Posts)
   }
 }

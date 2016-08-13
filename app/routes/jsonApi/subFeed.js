@@ -27,7 +27,7 @@ router.route('/')
   })
 router.route('/:id/comments')
   .get((req, res, next) => {
-   res.json(subFeed.getAllCommentsAndFeeds())
+   subFeed.getAllCommentsAndFeeds().then((commentsAndFeeds) => res.json(commentsAndFeeds)) 
       
   })
 

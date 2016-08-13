@@ -1,5 +1,6 @@
   angular.module('feedz.subFeedModalController', [])
     .controller('feedz.subFeedModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory) => {
+      this.parent = $scope
       $scope.createNewSubFeed = function() {
         var userData = localStorageFactory.getFromLocalStorage('user_data')
         subFeedFactory.createSubFeed($scope.subfeed, userData).then((subFeedResponse) => {

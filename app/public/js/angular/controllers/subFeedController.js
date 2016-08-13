@@ -45,7 +45,11 @@
             controller: 'feedz.subFeedModalController',
             templateUrl: '/build/addSubFeedModal.html',
             targetEvent: ev,
-          })
+          }).then((subFeedResponse) => {
+          
+          console.log(subFeedResponse)
+          $mdDialog.cancel()
+        })
       }
       $scope.showAddPost = function(ev) {
         $mdDialog.show({

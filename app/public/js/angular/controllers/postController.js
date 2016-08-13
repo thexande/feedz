@@ -1,11 +1,11 @@
   angular.module('feedz.postController', [])
   .controller('postController', function(getFeedById, getFeed, $scope, $mdDialog, $log, userFactory, $state, localStorageFactory) {
-    
-    $scope.feedName = getFeed.feed_name
-    $scope.feed = getFeedById.data
+    console.log(getFeedById)
     $scope.feedPristine = getFeedById.data
+    $scope.feed = getFeedById.data
     $scope.feedColumnLength = $scope.feed.length / 3
     $scope.feedColumns = []
+    console.log($scope.feed)    
     
     while($scope.feed.length) {
       $scope.feedColumns.push($scope.feed.splice(0, $scope.feedColumnLength))
@@ -16,7 +16,6 @@
       })
       $scope.feedColumns.pop()
     }
-    console.log($scope.feedColumns)
     $scope.feeds = [].concat.apply([], $scope.feedColumns)
     console.log($scope.feeds)
 

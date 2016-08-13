@@ -3,7 +3,8 @@
       console.log("subfeeds here", getSubFeeds)
       $scope.subFeeds = getSubFeeds.data
 
-      $scope.loadFeed = (feed_id, feed_name, feeds) => {
+      $scope.loadFeed = (feed_id, feed_name) => {
+        console.log(feed_id)
         $state.go('dash.post', { feed_id, feed_name })
       }
 

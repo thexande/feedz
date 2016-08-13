@@ -14,7 +14,7 @@ module.exports = class subFeedModel {
   getFeedById(feed_id) {
     return db.knex('feedz_sub_feeds').where('id', feed_id)
   }
-  getAllCommentsAndFeeds() {
+  getAllCommentsAndFeeds(id) {
 
 
     var Post = db.bookshelf.Model.extend({
@@ -30,7 +30,7 @@ module.exports = class subFeedModel {
       }
     });
 
-    return Post.forge().fetch({withRelated: ['comments']})
+    return Post.forge({id}).fetch({withRelated: ['comments']})
 
     // var SubFeeds = db.bookshelf.Model.extend({
     //   tableName: 'feedz_sub_feeds',

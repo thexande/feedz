@@ -27,6 +27,13 @@ module.exports = class subFeedModel {
         return this.belongsToMany(Post)
       }
     })
-    return Post.forge({id}).fetch({withRelated: ['comments']}) 
+      
+    var Feed = db.bookshelf.Model.extend({
+      tableName: 'feedz_sub_feeds',
+      posts: function() {
+        return this.hasMany(Post)
+      }
+    })
+    return Feed.forge({id}).fetch({withRelated: ['posts.comments']}) 
   }
 }

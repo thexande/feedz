@@ -91,6 +91,7 @@ const Feedz = angular
       url: '/post',
       params: {feed_id: null, feed_name: null, feeds: null},
       resolve:  {
+        subfeeds: ($http) => $http.get('/f/'),
         getFeed: ($stateParams) => $stateParams,
         getFeedById: ($stateParams, $http) => {
           return $http({

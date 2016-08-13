@@ -1,5 +1,18 @@
   angular.module('feedz.postController', [])
-  .controller('postController', function(getFeedById, getFeed, $scope, $mdDialog, $log, userFactory, $state, localStorageFactory) {
+  .controller('postController', function(
+    subfeeds, 
+    getFeedById, 
+    getFeed, 
+    $scope, 
+    $mdDialog, 
+    $log, 
+    userFactory, 
+    subFeedFactory,
+    $state, 
+    localStorageFactory) {
+    // subfeeds for dropdown
+    $scope.subFeeds = subfeeds.data
+    console.log(subfeeds)
     console.log(getFeedById)
     $scope.feedPristine = getFeedById.data
     $scope.feed = getFeedById.data
@@ -44,7 +57,12 @@
             subfeeds: $scope.subFeeds
           },
           targetEvent: ev,
-        }).then((postResp) => console.log(postResp))
+        }).then((postResp) => {
+          subFeedFactory.getPostsForFeed(getFeedById.data.id).then((feed) => {
+            console.log(feed)
+            $scope.feeds = feed.data.posts
+          })
+        })
     }
 
     $scope.showAddComment = function(ev) {

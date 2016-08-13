@@ -105,12 +105,12 @@ const Feedz = angular
             url: '/f/' + $stateParams.feed_id
           })
         },
-        getAllCommentsForFeed: ($stateParams) => {
-          return $http({
-            method: 'get',
-            url: '/f/' + $stateParams.post_id + "/comments"
-          })
-        }
+        // getAllCommentsForFeed: ($stateParams) => {
+        //   return $http({
+        //     method: 'get',
+        //     url: '/f/' + $stateParams.post_id + "/comments"
+        //   })
+        // }
       },
       templateUrl:  '/build/postIndex.html',
       controller: 'postController'

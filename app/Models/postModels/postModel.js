@@ -13,7 +13,7 @@ module.exports = class subFeedModel {
     return db.knex('feedz_posts').insert(post).returning("*")
   }
   getPostsBySubFeedId(id) {
-    return db.knex('feedz_posts').where('belongs_to_sub_feed', id)
+    return db.knex('feedz_posts').where('feedz_sub_feeds_id', id)
   }
   getAllCommentsByPostId(post_id) {
     return db.knex.raw(`select fc.*, fp.post_title, fu.username from feedz_comments as fc 

@@ -96,13 +96,19 @@ const Feedz = angular
     })
     .state('dash.post', {
       url: '/post',
-      params: {feed_id: null, feed_name: null},
+      params: {feed_id: null, feed_name: null, feeds: null},
       resolve:  {
         getFeed: ($stateParams) => $stateParams,
         getFeedById: ($stateParams, $http) => {
           return $http({
             method: 'get',
             url: '/f/' + $stateParams.feed_id
+          })
+        },
+        getAllCommentsForFeed: ($stateParams) => {
+          return $http({
+            method: 'get',
+            url: '/f/' + $stateParams.post_id + "/comments"
           })
         }
       },

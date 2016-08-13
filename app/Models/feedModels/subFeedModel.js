@@ -14,4 +14,31 @@ module.exports = class subFeedModel {
   getFeedById(feed_id) {
     return db.knex('feedz_sub_feeds').where('id', feed_id)
   }
+  getAllCommentsAndFeeds() {
+
+
+    var Post = db.bookshelf.Model.extend({
+      tableName: 'feedz_posts',
+        comments: function(){
+          return this.hasMany(Comment);
+        }
+    });
+    var Comment = db.bookshelf.Model.extend({
+      tableName: 'feedz_comments',
+      posts: function() {
+        return this.belongsToMany(Post);
+      }
+    });
+
+    Post.forge({id:1}).fetch({withRelated: ['comments']}).then(function(users) {  
+    console.log(users);
+});
+
+    // var SubFeeds = db.bookshelf.Model.extend({
+    //   tableName: 'feedz_sub_feeds',
+    //   tags: () => this.hasMany(Tag)
+    // })
+ 
+     console.log(Posts)
+  }
 }

@@ -1,4 +1,5 @@
 'use strict'
+const async = require('async')
 const express = require('express');
 const router = express.Router();
 const path = require('path')
@@ -7,6 +8,8 @@ const subFeed = new subFeedModelClass
 const postModelClass = require('../../Models/postModels/postModel')
 const posts = new postModelClass
 const passport = require('passport')
+
+
 
 router.route('/:id')
   .get((req, res, next) => {
@@ -22,7 +25,11 @@ router.route('/')
       subfeed.created_by_user = req.body.user.id
       subFeed.createSubFeed(subfeed).then((resp) => { res.json(resp) })
   })
-
+router.route('/:id/comments')
+  .get((req, res, next) => {
+   res.json(subFeed.getAllCommentsAndFeeds())
+      
+  })
 
 
 module.exports = router

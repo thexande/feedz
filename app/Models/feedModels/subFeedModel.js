@@ -9,21 +9,36 @@ module.exports = class subFeedModel {
     return db.knex.raw(`select sf.*, fu.username from feedz_sub_feeds as sf join feedz_users as fu on sf.feedz_user_id = fu.id`)
   }
   createSubFeed(subfeed) {
-    console.log(subfeed)
+    console.log(subfeed )
     return db.knex('feedz_sub_feeds').insert(subfeed)
   }
   getFeedById(feed_id) {
     return db.knex('feedz_sub_feeds').where('id', feed_id)
   }
   getAllCommentsAndFeeds(id) {
+    var User = db.bookshelf.Model.extend({
+      tableName: 'feedz_users',
+      
+      comments: function(){
+         return this.hasMany(Comments)
+        },
+      posts: () => this.hasMany(Posts)
+
+    })
     var Post = db.bookshelf.Model.extend({
       tableName: 'feedz_posts',
-        comments: function(){
-          return this.hasMany(Comment);
-        }
+      user: function() {
+        return this.belongsTo(User)
+      },
+      comments: function(){
+        return this.hasMany(Comment);
+      }
     })
     var Comment = db.bookshelf.Model.extend({
       tableName: 'feedz_comments',
+      user: function() {
+        return this.belongsTo(User)
+    },
       posts: function() {
         return this.belongsToMany(Post)
       }
@@ -35,6 +50,6 @@ module.exports = class subFeedModel {
         return this.hasMany(Post)
       }
     })
-    return Feed.forge({id}).fetch({withRelated: ['posts.comments']}) 
+    return Feed.forge({id}).fetch({withRelated: ['posts.comments.user', 'posts.user']}) 
   }
 }

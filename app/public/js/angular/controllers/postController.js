@@ -3,13 +3,15 @@
     console.log(getFeedById)
     $scope.feedPristine = getFeedById.data
     $scope.feed = getFeedById.data
-    $scope.feedColumnLength = $scope.feed.length / 3
+    $scope.feedColumnLength = $scope.feed.posts.length / 3
+    console.log($scope.feedColumnLength)
     $scope.feedColumns = []
-    console.log($scope.feed)    
-    
-    while($scope.feed.length) {
-      $scope.feedColumns.push($scope.feed.splice(0, $scope.feedColumnLength))
+    console.log($scope.feed.posts)    
+
+    while($scope.feed.posts.length) {
+      $scope.feedColumns.push($scope.feed.posts.splice(0, $scope.feedColumnLength))
     }
+    console.log($scope.feedColumns)
     if($scope.feedColumns.length === 4){
       $scope.feedColumns[3].forEach((val, key) => {
         $scope.feedColumns[ Math.floor(Math.random() * (2 - 0 + 1)) + 0].push(val)

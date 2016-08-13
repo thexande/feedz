@@ -14,7 +14,7 @@ form(name='userForm' ng-submit="createNewPost()")
         textarea(ng-model='post.post_content', columns='1', md-maxlength='150')
       md-input-container(flex="")
         label Post SubFeed
-        md-select(ng-model='post.feedz_sub_feeds_id', placeholder="Select SubFeed")
+        md-select(ng-model='post.feedz_sub_feed_id', placeholder="Select SubFeed")
           md-option(ng-value="feed.id", ng-repeat='feed in subfeeds') {{ feed.feed_title }}
     .md-actions(layout='row')
       span(flex='')

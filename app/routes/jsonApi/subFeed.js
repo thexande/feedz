@@ -22,7 +22,7 @@ router.route('/')
   })
   .post(passport.authenticate('bearer', {session: false}), (req, res, next) => {
       let subfeed = req.body.subfeedData
-      subfeed.created_by_user = req.body.user.id
+      subfeed.feedz_user_id = req.body.user.id
       subFeed.createSubFeed(subfeed).then((resp) => { res.json(resp) })
   })
 router.route('/:id/comments')

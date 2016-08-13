@@ -8,7 +8,7 @@ angular.module('feedz.postFactory', [])
         data: {
           access_token: localStorageFactory.getFromLocalStorage('user_data').token,
           post: {
-            created_by_user: user.id,
+            feedz_user_id: user.id,
             belongs_to_sub_feed: post.belongs_to_sub_feed,
             post_content: post.post_content,
             post_title: post.post_title

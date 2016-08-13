@@ -18,8 +18,8 @@ return Promise.all([
   }),
   knex.schema.createTable('feedz_posts', function(table){
     table.increments('id').primary()
-    table.integer('created_by_user').references("feedz_users.id")
-    table.integer('feedz_sub_feeds_id').unique().references("feedz_sub_feeds.id")
+    table.integer('feedz_user_id').references("feedz_users.id")
+    table.integer('feedz_sub_feed_id').unique().references("feedz_sub_feeds.id")
     table.string('post_content', 1000)
     table.string('post_title')
     table.string('post_image_url')
@@ -28,8 +28,8 @@ return Promise.all([
   }),
   knex.schema.createTable('feedz_comments', function(table){
     table.increments('id').primary()
-    table.integer('feedz_users_id').unique().references("feedz_users.id")
-    table.integer('feedz_posts_id').unique().references("feedz_posts.id")
+    table.integer('feedz_user_id').unique().references("feedz_users.id")
+    table.integer('feedz_post_id').unique().references("feedz_posts.id")
     table.string('post_content', 1000)
     table.string('comment_title')
     table.string('comment_content')
@@ -37,14 +37,14 @@ return Promise.all([
   }),
   knex.schema.createTable('feedz_favorite_posts', function(table){
     table.increments('id').primary()
-    table.integer('feedz_users_id').unique().references("feedz_users.id")
-    table.integer('feedz_posts_id').unique().references("feedz_posts.id")
+    table.integer('feedz_user_id').unique().references("feedz_users.id")
+    table.integer('feedz_post_id').unique().references("feedz_posts.id")
     table.integer('created_at')
   }),
   knex.schema.createTable('feedz_karma', function(table){
     table.increments('id').primary()
-    table.integer('feedz_users_id').unique().references("feedz_users.id")
-    table.integer('feedz_posts_id').unique().references("feedz_posts.id")
+    table.integer('feedz_user_id').unique().references("feedz_users.id")
+    table.integer('feedz_post_id').unique().references("feedz_posts.id")
     table.boolean('upvote')
     table.boolean('downvote')
     table.integer('created_at')

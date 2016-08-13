@@ -9,7 +9,7 @@ angular.module('feedz.postFactory', [])
           access_token: localStorageFactory.getFromLocalStorage('user_data').token,
           post: {
             feedz_user_id: user.id,
-            belongs_to_sub_feed: post.belongs_to_sub_feed,
+            feedz_sub_feed_id: post.feedz_sub_feed_id,
             post_content: post.post_content,
             post_title: post.post_title
           }

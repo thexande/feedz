@@ -9,6 +9,7 @@ module.exports = class subFeedModel {
     return db.knex.raw(`select sf.*, fu.username from feedz_sub_feeds as sf join feedz_users as fu on sf.feedz_user_id = fu.id`)
   }
   createSubFeed(subfeed) {
+    console.log(subfeed)
     return db.knex('feedz_sub_feeds').insert(subfeed)
   }
   getFeedById(feed_id) {

@@ -3,6 +3,43 @@
 const db = require('../../config/db/knex/knexConfig')
 const bcrypt = require('bcrypt')
 
+
+// bookshelf
+
+const User = db.bookshelf.Model.extend({
+  tableName: 'feedz_users',
+  comments: function(){
+      return this.hasMany(Comments)
+    },
+  posts: () => this.hasMany(Posts)
+
+})
+const Post = db.bookshelf.Model.extend({
+  tableName: 'feedz_posts',
+  user: function() {
+    return this.belongsTo(User)
+  },
+  comments: function(){
+    return this.hasMany(Comment);
+  }
+})
+const Comment = db.bookshelf.Model.extend({
+  tableName: 'feedz_comments',
+  user: function() {
+    return this.belongsTo(User)
+},
+  posts: function() {
+    return this.belongsToMany(Post)
+  }
+})
+  
+const Feed = db.bookshelf.Model.extend({
+  tableName: 'feedz_sub_feeds',
+  posts: function() {
+    return this.hasMany(Post)
+  }
+})
+
 module.exports = class subFeedModel {
   constructor() {}
   getAllSubFeeds() {
@@ -16,40 +53,6 @@ module.exports = class subFeedModel {
     return db.knex('feedz_sub_feeds').where('id', feed_id)
   }
   getAllCommentsAndFeeds(id) {
-    var User = db.bookshelf.Model.extend({
-      tableName: 'feedz_users',
-      
-      comments: function(){
-         return this.hasMany(Comments)
-        },
-      posts: () => this.hasMany(Posts)
-
-    })
-    var Post = db.bookshelf.Model.extend({
-      tableName: 'feedz_posts',
-      user: function() {
-        return this.belongsTo(User)
-      },
-      comments: function(){
-        return this.hasMany(Comment);
-      }
-    })
-    var Comment = db.bookshelf.Model.extend({
-      tableName: 'feedz_comments',
-      user: function() {
-        return this.belongsTo(User)
-    },
-      posts: function() {
-        return this.belongsToMany(Post)
-      }
-    })
-      
-    var Feed = db.bookshelf.Model.extend({
-      tableName: 'feedz_sub_feeds',
-      posts: function() {
-        return this.hasMany(Post)
-      }
-    })
     return Feed.forge({id}).fetch({withRelated: ['posts.comments.user', 'posts.user']}) 
   }
 }

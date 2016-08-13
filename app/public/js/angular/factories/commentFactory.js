@@ -8,6 +8,7 @@ angular.module('feedz.commentFactory', [])
         data: {
           access_token: localStorageFactory.getFromLocalStorage('user_data').token,
           comment: {
+            created_at: Date.now(),
             created_by_user: user.id,
             belongs_to_sub_feed: post.belongs_to_sub_feed,
             post_content: post.post_content,

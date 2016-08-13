@@ -21,6 +21,7 @@ router.route('/')
     subFeed.getAllSubFeeds().then((allSubFeeds) => { res.json(allSubFeeds.rows) })
   })
   .post(passport.authenticate('bearer', {session: false}), (req, res, next) => {
+    console.log(req.body)
       let subfeed = req.body.subfeedData
       subfeed.feedz_user_id = req.body.user.id
       subFeed.createSubFeed(subfeed).then((resp) => { res.json(resp) })

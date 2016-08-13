@@ -3,13 +3,18 @@
       this.parent = $scope
       $scope.createNewSubFeed = function() {
         var userData = localStorageFactory.getFromLocalStorage('user_data')
-        subFeedFactory.createSubFeed($scope.subfeed, userData).then((subFeedResponse) => {
-          
-          console.log(subFeedResponse)
-          $mdDialog.cancel()
-        })
-
+        $mdDialog.cancel()
+         subFeedFactory.createSubFeed($scope.subfeed, userData)
+        
       }
+      $scope.ok = function () {
+        var userData = localStorageFactory.getFromLocalStorage('user_data')
+        subFeedFactory.createSubFeed($scope.subfeed, userData).then((resp) => {
+          $mdDialog.hide(resp);
+        })
+        
+        
+      };
       $scope.hide = function() {
         $mdDialog.hide();
       };

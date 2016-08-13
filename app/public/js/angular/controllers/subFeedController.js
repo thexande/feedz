@@ -1,5 +1,5 @@
   angular.module('feedz.subFeedController', [])
-    .controller('subFeedController', function($state, $scope, getSubFeeds, $mdDialog, userFactory) {
+    .controller('subFeedController', function($state, $scope, getSubFeeds, $mdDialog, userFactory, subFeedFactory) {
       console.log("subfeeds here", getSubFeeds)
       $scope.subFeeds = getSubFeeds.data
 
@@ -46,9 +46,9 @@
             templateUrl: '/build/addSubFeedModal.html',
             targetEvent: ev,
           }).then((subFeedResponse) => {
-          
+            subFeedFactory.getSubFeeds().then((feeds) => $scope.subFeeds = feeds.data)
           console.log(subFeedResponse)
-          $mdDialog.cancel()
+          
         })
       }
       $scope.showAddPost = function(ev) {

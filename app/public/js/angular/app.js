@@ -1,4 +1,10 @@
 'use strict'
+console.realWarn = console.warn;
+console.warn = function (message) {
+    if (message.indexOf("ARIA") == -1) {
+        console.realWarn.apply(console, arguments);
+    }
+};
 
 const Feedz = angular
    .module('feedz',

@@ -12,8 +12,6 @@
         subFeedFactory.createSubFeed($scope.subfeed, userData).then((resp) => {
           $mdDialog.hide(resp);
         })
-        
-        
       };
       $scope.hide = function() {
         $mdDialog.hide();

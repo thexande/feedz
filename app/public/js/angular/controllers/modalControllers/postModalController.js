@@ -9,6 +9,13 @@
           $mdDialog.cancel()
         })
       }
+      $scope.ok = function () {
+        var userData = localStorageFactory.getFromLocalStorage('user_data')
+        postFactory.createPost($scope.post, userData).then((PostResponse) => {
+           $mdDialog.hide(PostResponse);
+        })         
+      }
+
       $scope.hide = function() {
         $mdDialog.hide();
       };

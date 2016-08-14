@@ -3,9 +3,7 @@
 const db = require('../../config/db/knex/knexConfig')
 const bcrypt = require('bcrypt')
 
-
-// bookshelf
-
+// bookshelf relations
 const User = db.bookshelf.Model.extend({
   tableName: 'feedz_users',
   comments: function(){

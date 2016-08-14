@@ -38,14 +38,22 @@ const Feedz = angular
       'feedz.utilityFactory',
       'feedz.commentFactory'])
 
-  // md=theming configuration
-  Feedz.config(function($mdThemingProvider) {
-    $mdThemingProvider.theme('default')
-      .primaryPalette('green')
-    $mdThemingProvider.theme('login')
-      .primaryPalette('indigo')
-      .accentPalette('green');
-  })
+  // // md=theming configuration
+  // Feedz.config(function($mdThemingProvider) {
+  //   $mdThemingProvider.theme('default')
+  //     .primaryPalette('green')
+  //   $mdThemingProvider.theme('login')
+  //     .primaryPalette('indigo')
+  //     .accentPalette('green');
+  // })
+Feedz.config(function($mdThemingProvider) {
+               $mdThemingProvider.theme('customTheme') 
+                  .primaryPalette('grey')
+                  .accentPalette('orange')
+                  .warnPalette('red');
+               });
+
+
   // local stroage config
   Feedz.config(function (localStorageServiceProvider) {
   localStorageServiceProvider

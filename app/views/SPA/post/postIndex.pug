@@ -49,7 +49,7 @@ md-content(flex='', md-scroll-y='')
 					md-card(ng-repeat="post in columns | filter:search")
 						md-card-header
 							md-card-avatar
-								img(ng-src="http://65.media.tumblr.com/tumblr_l7dbl0MHbU1qz50x3o1_500.png")
+								img.md-avatar(ng-src='http://65.media.tumblr.com/tumblr_l7dbl0MHbU1qz50x3o1_500.png')
 							md-card-header-text
 								span.md-title {{ post.user.username }}
 								span.md-subhead {{ post.created_at | date:'yyyy-MM-dd HH:mm:ss Z' }}
@@ -73,7 +73,7 @@ md-content(flex='', md-scroll-y='')
 						md-card-content
 							md-subheader.md-no-sticky {{post.post_content}}
 
-							md-list.md-dense(flex='')
+							md-list(flex='')
 								md-list-item.md-3-line(ng-repeat='comment in post.comments')
 									img.md-avatar(ng-src='http://65.media.tumblr.com/tumblr_l7dbl0MHbU1qz50x3o1_500.png')
 									.md-list-item-text(layout='column')

@@ -3,6 +3,7 @@ angular.module('feedz.postFactory', [])
   return {
     createPost: (post, user) => {
       post.created_at = Date.now()
+      post.feedz_user_id = user.id
       return $http({
         method: 'post',
         url: '/posts',

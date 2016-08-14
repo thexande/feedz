@@ -64,7 +64,8 @@
           templateUrl: '/build/addCommentModal.html',
           locals: { post },
         }).then((commentResponse) => {
-          console.log(commentResponse)
+          subFeedFactory.getPostsForFeed(getFeedById.data.id)
+          .then((updatedFeed) => $scope.feeds = $scope.generateColumns(updatedFeed.data.posts))
         })
     }
   })

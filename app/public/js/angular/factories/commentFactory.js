@@ -1,18 +1,18 @@
 angular.module('feedz.commentFactory', [])
 .factory('commentFactory', function($http, localStorageFactory){
   return {
-    createPost: (post, user) => {
+    createComment: (comment, post) => {
+      let user = localStorageFactory.getFromLocalStorage('user_data')
       return $http({
-        method: 'post',
-        url: '/posts',
+        method: 'comment',
+        url: '/comments',
         data: {
-          access_token: localStorageFactory.getFromLocalStorage('user_data').token,
+          access_token: user.token,
           comment: {
             created_at: Date.now(),
-            created_by_user: user.id,
-            belongs_to_sub_feed: post.belongs_to_sub_feed,
-            post_content: post.post_content,
-            post_title: post.post_title
+            feedz_user_id: user.id,
+            feedz_post_id: post.id,
+            comment_content: comment.comment_content,
           }
         }
       })

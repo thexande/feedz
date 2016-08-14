@@ -2,7 +2,6 @@ angular.module('feedz.postFactory', [])
 .factory('postFactory', function($http, localStorageFactory){
   return {
     createPost: (post, user) => {
-      console.log(post)
       post.created_at = Date.now()
       return $http({
         method: 'post',

@@ -58,14 +58,13 @@
         })
     }
 
-    $scope.showAddComment = function(ev) {
+    $scope.showAddComment = function(post) {
       $mdDialog.show({
           controller: 'feedz.commentModalController',
           templateUrl: '/build/addCommentModal.html',
-          // locals: {
-          //   subfeeds: $scope.subFeeds
-          // },
-          targetEvent: ev,
+          locals: { post },
+        }).then((commentResponse) => {
+          console.log(commentResponse)
         })
     }
   })

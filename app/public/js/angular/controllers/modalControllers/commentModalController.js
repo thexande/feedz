@@ -1,21 +1,19 @@
-  angular.module('feedz.commentModalController', [])
-    .controller('feedz.commentModalController', ($scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory, postFactory) => {
+angular.module('feedz.commentModalController', [])
+  .controller('feedz.commentModalController', (post, $scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory, postFactory, commentFactory) => {
+    $scope.post = post      
+      $scope.ok = function () {
+        commentFactory.creatComment($scope.comment, $scope.post).then((commentResponse) => {
+           $mdDialog.hide(commentResponse);
+        })         
+      }
 
-      // $scope.createNewPost = function() {
-      //   var userData = localStorageFactory.getFromLocalStorage('user_data')
-      //   postFactory.createPost($scope.post, userData).then((PostResponse) => {
-      //     console.log(PostResponse)
-      //     $mdDialog.cancel()
-      //   })
-      // }
-
-      $scope.hide = function() {
-        $mdDialog.hide();
-      };
-      $scope.cancel = function() {
-        $mdDialog.cancel();
-      };
-      $scope.answer = function(answer) {
-        $mdDialog.hide(answer);
-      };
-    })
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  })

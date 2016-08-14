@@ -1,5 +1,6 @@
 module.exports = {
-  user: require('./jsonApi/user'),
-  f: require('./jsonApi/subFeed'),
-  posts: require('./jsonApi/posts')
+  user: require('./jsonApi/userRoutes'),
+  f: require('./jsonApi/subFeedRoutes'),
+  posts: require('./jsonApi/postsRoutes'),
+  comments: require('./jsonApi/commentsRoutes')
 }

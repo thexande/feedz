@@ -1,11 +1,11 @@
 form(name='userForm' ng-submit="createNewPost()")
   md-dialog.modal-wide(aria-label='Mango (Fruit)')
     md-content.md-padding
-      h2  Now adding a new comment.
+      h2  Now adding a new comment to {{ post.post_title }}
       div(layout='', layout-sm='column')
       md-input-container(flex='')
         label Your Comment
-        textarea(ng-model='post.post_content', columns='1', md-maxlength='150')
+        textarea(ng-model='comment.comment_content', columns='1', md-maxlength='150')
     .md-actions(layout='row')
       span(flex='')
       md-button(ng-click="answer(\'not useful\')")  Cancel

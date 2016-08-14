@@ -4,7 +4,7 @@ angular.module('feedz.commentFactory', [])
     createComment: (comment, post) => {
       let user = localStorageFactory.getFromLocalStorage('user_data')
       return $http({
-        method: 'comment',
+        method: 'post',
         url: '/comments',
         data: {
           access_token: user.token,

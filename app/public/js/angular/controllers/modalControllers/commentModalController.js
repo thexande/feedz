@@ -2,7 +2,7 @@ angular.module('feedz.commentModalController', [])
   .controller('feedz.commentModalController', (post, $scope, $mdDialog, userFactory, localStorageFactory, subFeedFactory, postFactory, commentFactory) => {
     $scope.post = post      
       $scope.ok = function () {
-        commentFactory.creatComment($scope.comment, $scope.post).then((commentResponse) => {
+        commentFactory.createComment($scope.comment, $scope.post).then((commentResponse) => {
            $mdDialog.hide(commentResponse);
         })         
       }

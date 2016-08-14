@@ -46,7 +46,7 @@ md-content(flex='', md-scroll-y='')
 		ng-switch.tabpanel-container(on='data.selectedIndex')
 			#tab1-content(role='tabpanel', aria-labelledby='tab2', ng-switch-when='0', md-swipe-left='next()', md-swipe-right='previous()', layout='row', layout-align='center center')
 				div(flex-xs='', flex-gt-xs='50', layout='column' ng-repeat="columns in feedColumns")
-					md-card(ng-repeat=" post in columns | filter:search")
+					md-card(ng-repeat="post in columns | filter:search")
 						img.md-card-image(ng-src='{{ post.post_image_url }}', alt='Washed Out')
 						md-card-title
 							md-card-title-text
@@ -55,7 +55,7 @@ md-content(flex='', md-scroll-y='')
 						md-card-content
 							p {{post.post_content}}
 							md-divider
-              p Post Comments
+							p Post Comments
 							md-list
 								md-item(ng-repeat='comment in post.comments')
 									md-item-content

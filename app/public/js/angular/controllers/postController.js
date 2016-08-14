@@ -17,18 +17,22 @@
     $scope.feeds = getFeedById.data.posts
 
     $scope.generateColumns = (feed) => {
-      $scope.feedColumns = []
-      $scope.feedColumnLength = feed.length / 3
-      while(feed.length) {
-        $scope.feedColumns.push(feed.splice(0, $scope.feedColumnLength))
+      if(feed.length <= 3){
+        console.log("less than 3")
+      } else {
+        $scope.feedColumns = []
+        $scope.feedColumnLength = feed.length / 3
+        while(feed.length) {
+          $scope.feedColumns.push(feed.splice(0, $scope.feedColumnLength))
+        }
+        if($scope.feedColumns.length === 4){
+          $scope.feedColumns[3].forEach((val, key) => {
+            $scope.feedColumns[ Math.floor(Math.random() * (2 - 0 + 1)) + 0 ].push(val)
+          })
+          $scope.feedColumns.pop()
+        }
+      return [].concat.apply([], $scope.feedColumns)
       }
-      if($scope.feedColumns.length === 4){
-        $scope.feedColumns[3].forEach((val, key) => {
-          $scope.feedColumns[ Math.floor(Math.random() * (2 - 0 + 1)) + 0 ].push(val)
-        })
-        $scope.feedColumns.pop()
-      }
-     return [].concat.apply([], $scope.feedColumns)
     }
 
     $scope.feeds = $scope.generateColumns($scope.feed.posts)

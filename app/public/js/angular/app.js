@@ -38,21 +38,93 @@ const Feedz = angular
       'feedz.utilityFactory',
       'feedz.commentFactory'])
 
-  // // md=theming configuration
-  // Feedz.config(function($mdThemingProvider) {
-  //   $mdThemingProvider.theme('default')
-  //     .primaryPalette('green')
-  //   $mdThemingProvider.theme('login')
-  //     .primaryPalette('indigo')
-  //     .accentPalette('green');
-  // })
-Feedz.config(function($mdThemingProvider) {
-               $mdThemingProvider.theme('customTheme') 
-                  .primaryPalette('grey')
-                  .accentPalette('orange')
-                  .warnPalette('red');
-               });
+// Feedz.config(function ($mdThemingProvider) {
+//     var customPrimary = {
+//         '50': '#98a2db',
+//         '100': '#8591d5',
+//         '200': '#7280ce',
+//         '300': '#606fc7',
+//         '400': '#4d5ec1',
+//         '500': '#3F51B5',
+//         '600': '#3849a2',
+//         '700': '#32408f',
+//         '800': '#2b387c',
+//         '900': '#252f69',
+//         'A100': '#abb4e2',
+//         'A200': '#bec5e8',
+//         'A400': '#d1d6ef',
+//         'A700': '#1e2756'
+//     };
+//     $mdThemingProvider
+//         .definePalette('customPrimary', 
+//                         customPrimary);
 
+//     var customAccent = {
+//         '50': '#19120f',
+//         '100': '#291d18',
+//         '200': '#392822',
+//         '300': '#49332b',
+//         '400': '#593f35',
+//         '500': '#694a3e',
+//         '600': '#896052',
+//         '700': '#996b5b',
+//         '800': '#a57868',
+//         '900': '#af8778',
+//         'A100': '#896052',
+//         'A200': '#795548',
+//         'A400': '#694a3e',
+//         'A700': '#b89588'
+//     };
+//     $mdThemingProvider
+//         .definePalette('customAccent', 
+//                         customAccent);
+
+//     var customWarn = {
+//         '50': '#616161',
+//         '100': '#545454',
+//         '200': '#474747',
+//         '300': '#3a3a3a',
+//         '400': '#2e2e2e',
+//         '500': '#212121',
+//         '600': '#141414',
+//         '700': '#070707',
+//         '800': '#000000',
+//         '900': '#000000',
+//         'A100': '#6d6d6d',
+//         'A200': '#7a7a7a',
+//         'A400': '#878787',
+//         'A700': '#000000'
+//     };
+//     $mdThemingProvider
+//         .definePalette('customWarn', 
+//                         customWarn);
+
+//     var customBackground = {
+//         '50': '#fdfdfd',
+//         '100': '#f0f0f0',
+//         '200': '#e3e3e3',
+//         '300': '#d6d6d6',
+//         '400': '#cacaca',
+//         '500': '#BDBDBD',
+//         '600': '#b0b0b0',
+//         '700': '#a3a3a3',
+//         '800': '#979797',
+//         '900': '#8a8a8a',
+//         'A100': '#ffffff',
+//         'A200': '#ffffff',
+//         'A400': '#ffffff',
+//         'A700': '#7d7d7d'
+//     };
+//     $mdThemingProvider
+//         .definePalette('customBackground', 
+//                         customBackground);
+
+//    $mdThemingProvider.theme('default')
+//        .primaryPalette('customPrimary')
+//        .accentPalette('customAccent')
+//        .warnPalette('customWarn')
+//        .backgroundPalette('customBackground')
+// });
 
   // local stroage config
   Feedz.config(function (localStorageServiceProvider) {
@@ -178,19 +250,3 @@ Feedz.directive('userAvatar', function() {
   };
 });
 
-Feedz.config(function($mdThemingProvider) {
-  var customBlueMap = 		$mdThemingProvider.extendPalette('green', {
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': ['50'],
-    '50': 'ffffff'
-  });
-  $mdThemingProvider.definePalette('customGreen', customBlueMap);
-  $mdThemingProvider.theme('default')
-    .primaryPalette('customGreen', {
-      'default': '500',
-      'hue-1': '50'
-    })
-    .accentPalette('pink');
-  $mdThemingProvider.theme('input', 'default')
-        .primaryPalette('grey')
-});

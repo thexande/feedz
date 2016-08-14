@@ -49,10 +49,10 @@ md-content(flex='', md-scroll-y='')
 					md-card(ng-repeat="post in columns | filter:search")
 						md-card-header
 							md-card-avatar
-								md-icon.md-avatar-icon(md-svg-icon='img/icons/menu.svg')
+								img(ng-src="http://65.media.tumblr.com/tumblr_l7dbl0MHbU1qz50x3o1_500.png")
 							md-card-header-text
-								span.md-title {{ post.post_title }}
-								span.md-subhead {{ post.created_at }}
+								span.md-title {{ post.user.username }}
+								span.md-subhead {{ post.created_at | date:'yyyy-MM-dd HH:mm:ss Z' }}
 						img.md-card-image(ng-src='{{ post.post_image_url }}', alt='Washed Out')
 
 						md-card-actions(layout='row', layout-align='end center')
@@ -71,14 +71,18 @@ md-content(flex='', md-scroll-y='')
 							md-card-title-text
 								span.md-headline {{ post.post_title }}
 						md-card-content
-							p {{post.post_content}}
-							p Post Comments
-							md-list
-								md-item(ng-repeat='comment in post.comments')
-									md-item-content
-										.md-tile-content
-											h3 {{comment .comment_content}}
-											h4 {{comment.feedz_user_id}}
+							md-subheader.md-no-sticky {{post.post_content}}
+
+							md-list.md-dense(flex='')
+								md-list-item.md-3-line(ng-repeat='comment in post.comments')
+									img.md-avatar(ng-src='http://65.media.tumblr.com/tumblr_l7dbl0MHbU1qz50x3o1_500.png')
+									.md-list-item-text(layout='column')
+										h3 {{ comment.user.username }}
+										h4 {{ comment.comment_content }}
+										p {{ comment.created_at | date:'yyyy-MM-dd HH:mm:ss Z' }}
+
+
+
 			#tab2-content(role='tabpanel', aria-labelledby='tab1', ng-switch-when='1', md-swipe-left='next()', md-swipe-right='previous()', layout='row', layout-align='center center')
 				md-button.md-fab.md-fab-top-left(aria-label='Add', ui-sref="dash.feeds")
 					ng-md-icon(icon="arrow_back")

@@ -15,7 +15,7 @@
     $scope.feedPristine = getFeedById.data
     $scope.feed = getFeedById.data
     $scope.feeds = getFeedById.data.posts
-
+    
     $scope.generateColumns = (feed) => {
       if(feed.length <= 3){
         console.log("less than 3")
@@ -34,9 +34,8 @@
       return [].concat.apply([], $scope.feedColumns)
       }
     }
-
     $scope.feeds = $scope.generateColumns($scope.feed.posts)
-    
+    console.log($scope.feeds)
     $scope.loadPost = (post_id) => {
       $state.go('dash.showPost', { feed_name: getFeed, post_id })
     }

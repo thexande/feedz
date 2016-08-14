@@ -47,21 +47,14 @@ md-content(flex='', md-scroll-y='')
 			#tab1-content(role='tabpanel', aria-labelledby='tab2', ng-switch-when='0', md-swipe-left='next()', md-swipe-right='previous()', layout='row', layout-align='center center')
 				div(flex-xs='', flex-gt-xs='50', layout='column' ng-repeat="columns in feedColumns")
 					md-card(ng-repeat="post in columns | filter:search")
+						md-card-header
+							md-card-avatar
+								md-icon.md-avatar-icon(md-svg-icon='img/icons/menu.svg')
+							md-card-header-text
+								span.md-title {{ post.post_title }}
+								span.md-subhead {{ post.created_at }}
 						img.md-card-image(ng-src='{{ post.post_image_url }}', alt='Washed Out')
-						md-card-title
-							md-card-title-text
-								span.md-headline {{ post.post_title }}
-								md-divider
-						md-card-content
-							p {{post.post_content}}
-							md-divider
-							p Post Comments
-							md-list
-								md-item(ng-repeat='comment in post.comments')
-									md-item-content
-										.md-tile-content
-											h3 {{comment .comment_content}}
-											h4 {{comment.feedz_user_id}}
+
 						md-card-actions(layout='row', layout-align='end center')
 							md-button.md-icon-button(aria-label='Favorite')
 								ng-md-icon(icon="favorite")
@@ -74,6 +67,18 @@ md-content(flex='', md-scroll-y='')
 							div 1
 							div /
 							div 3
+						md-card-title
+							md-card-title-text
+								span.md-headline {{ post.post_title }}
+						md-card-content
+							p {{post.post_content}}
+							p Post Comments
+							md-list
+								md-item(ng-repeat='comment in post.comments')
+									md-item-content
+										.md-tile-content
+											h3 {{comment .comment_content}}
+											h4 {{comment.feedz_user_id}}
 			#tab2-content(role='tabpanel', aria-labelledby='tab1', ng-switch-when='1', md-swipe-left='next()', md-swipe-right='previous()', layout='row', layout-align='center center')
 				md-button.md-fab.md-fab-top-left(aria-label='Add', ui-sref="dash.feeds")
 					ng-md-icon(icon="arrow_back")

@@ -12,55 +12,31 @@
     localStorageFactory) {
     // subfeeds for dropdown
     $scope.subFeeds = subfeeds.data
-    $scope.feedPristine = getFeedById.data
-    $scope.feed = getFeedById.data
-    
-     $scope.generateColumns = (arr, n) => {
+    $scope.feedData = getFeedById.data
+    console.log($scope.feedData)
 
+    $scope.feed = getFeedById.data
+    $scope.generateColumns = (arr, n) => {
         var rest = arr.length % n,
         restUsed = rest,
         partLength = Math.floor(arr.length / n),
         result = [];
-    
     for(var i = 0; i < arr.length; i += partLength) {
         var end = partLength + i,
             add = false;
-        
         if(rest !== 0 && restUsed) {
             end++;
             restUsed--;
             add = true;
         }
-        
         result.push(arr.slice(i, end));
-        
         if(add) {
             i++;
         }
     }
-    
     return result;
-
-      //   let feedColumns = []
-      //   let feedColumnLength = feed.length / 3
-      //   while(feed.length) {
-      //     feedColumns.push(feed.splice(0, feedColumnLength))
-      //     console.log(feedColumns)
-      //   }
-      //   if(feedColumns.length === 4){
-      //     feedColumns[3].forEach((val, key) => {
-      //       feedColumns[ Math.floor(Math.random() * (2 - 0 + 1)) + 0 ].push(val)
-      //     })
-      //     feedColumns.pop()
-      //   }
-      // let columnArr = []
-      // // columnArr = feedColumns.concat.apply([], feedColumns)
-      // // console.log(columnArr)
-      // console.log(feedColumns)
-      // return feedColumns
-
-      
     }
+
     $scope.feeds = $scope.generateColumns($scope.feed.posts, 3)
     console.log($scope.feeds)
     console.log($scope.feedColumns)

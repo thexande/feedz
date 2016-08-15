@@ -36,7 +36,8 @@ const Feedz = angular
       'feedz.subFeedFactory',
       'feedz.postFactory',
       'feedz.utilityFactory',
-      'feedz.commentFactory'])
+      'feedz.commentFactory',
+      'feedz.karmaFactory'])
 
 // Feedz.config(function ($mdThemingProvider) {
 //     var customPrimary = {
@@ -173,19 +174,23 @@ const Feedz = angular
       resolve:  {
         subfeeds: ($http) => $http.get('/f/'),
         getFeed: ($stateParams) => $stateParams,
-        getFeedById: ($stateParams, $http) => {
-          return $http({
+        getFeedById: ($stateParams, $http, localStorageFactory) => {
+           return $http({
             method: 'get',
             url: '/f/' + $stateParams.feed_id + '/comments'
           })
         },
-        // getAllCommentsForFeed: ($stateParams) => {
-        //   return $http({
-        //     method: 'get',
-        //     url: '/f/' + $stateParams.post_id + "/comments"
-        //   })
-        // }
+        setSubFeedToLocal: ($stateParams, $http, localStorageFactory) => {
+           $http({
+            method: 'get',
+            url: '/f/' + $stateParams.feed_id + '/comments'
+          }).then((subfeed) => {
+            localStorageFactory.setToLocalStorage('subfeed', subfeed)
+            return subfeed
+          })
+        }
       },
+       
       templateUrl:  '/build/postIndex.html',
       controller: 'postController'
     })

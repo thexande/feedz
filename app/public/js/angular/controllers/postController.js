@@ -9,13 +9,21 @@
     userFactory, 
     subFeedFactory,
     $state, 
-    localStorageFactory) {
+    localStorageFactory,
+    karmaFactory) {
     // subfeeds for dropdown
-    $scope.subFeeds = subfeeds.data
-    $scope.feedData = getFeedById.data
+    $scope.localSubFeed = localStorageFactory.getFromLocalStorage('subfeed')
+    if(getFeedById){
+      $scope.subFeeds = subfeeds.data
+      $scope.feedData = getFeedById.data
+      $scope.feed = getFeedById.data
+      
+    } else {
+      $scope.feed = $scope.localSubFeed.data
+    }
+   
     console.log($scope.feedData)
-
-    $scope.feed = getFeedById.data
+    console.log("local storage here", localStorageFactory.getFromLocalStorage('subfeed'))
     $scope.generateColumns = (arr, n) => {
         var rest = arr.length % n,
         restUsed = rest,
@@ -79,6 +87,7 @@
     }
     $scope.upVote = (post_id) => {
       console.log("upvote", post_id)
+      karmaFactory.upVote(post_id).then((resp) => {console.log(resp)})
     }
     $scope.downVote = (post_id) => {
       console.log("downvote", post_id)

@@ -19,7 +19,11 @@ const Post = db.bookshelf.Model.extend({
   },
   comments: function(){
     return this.hasMany(Comment);
+  },
+  karma: function() {
+    return this.hasMany(Karma)
   }
+
 })
 const Comment = db.bookshelf.Model.extend({
   tableName: 'feedz_comments',
@@ -37,6 +41,12 @@ const Feed = db.bookshelf.Model.extend({
     return this.hasMany(Post)
   }
 })
+const Karma = db.bookshelf.Model.extend({
+  tableName: 'feedz_karma',
+  posts: function() {
+    return this.belongsToMany(Post)
+  }
+})
 
 module.exports = class subFeedModel {
   constructor() {}
@@ -51,6 +61,6 @@ module.exports = class subFeedModel {
     return db.knex('feedz_sub_feeds').where('id', feed_id)
   }
   getAllCommentsAndFeeds(id) {
-    return Feed.forge({id}).fetch({withRelated: ['posts.comments.user', 'posts.user']}) 
+    return Feed.forge({id}).fetch({withRelated: ['posts.comments.user', 'posts.user', 'posts.karma']}) 
   }
 }

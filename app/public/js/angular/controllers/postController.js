@@ -71,4 +71,10 @@
           .then((updatedFeed) => $scope.feeds = $scope.generateColumns(updatedFeed.data.posts))
         })
     }
+    $scope.upVote = (post_id) => {
+      console.log("upvote", post_id)
+    }
+    $scope.downVote = (post_id) => {
+      console.log("downvote", post_id)
+    }
   })

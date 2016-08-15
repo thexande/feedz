@@ -54,19 +54,17 @@ md-content(flex='', md-scroll-y='')
 								span.md-title {{ post.user.username }}
 								span.md-subhead {{ post.created_at | date:'yyyy-MM-dd HH:mm:ss Z' }}
 						img.md-card-image(ng-src='{{ post.post_image_url }}', alt='Washed Out')
-
 						md-card-actions(layout='row', layout-align='end center')
 							md-button.md-icon-button(aria-label='Favorite')
 								ng-md-icon(icon="favorite")
 							md-button.md-icon-button(aria-label='Comment',  ng-click="showAddComment(post)")
 								ng-md-icon(icon="comment")
-							md-button.md-icon-button(aria-label='upvote')
+							md-button.md-icon-button(aria-label='upvote', ng-click="upVote(post.id)")
 								ng-md-icon(icon="thumb_up")
-							md-button.md-icon-button(aria-label='downvote')
+							h3 4
+							md-button.md-icon-button(aria-label='downvote', ng-click="downVote(post.id)")
 								ng-md-icon(icon="thumb_down")
-							div 1
-							div /
-							div 3
+							h3 3
 						md-card-title
 							md-card-title-text
 								span.md-headline {{ post.post_title }}

@@ -14,28 +14,58 @@
     $scope.subFeeds = subfeeds.data
     $scope.feedPristine = getFeedById.data
     $scope.feed = getFeedById.data
-    $scope.feeds = getFeedById.data.posts
     
-    $scope.generateColumns = (feed) => {
-      if(feed.length <= 3){
-        console.log("less than 3")
-      } else {
-        $scope.feedColumns = []
-        $scope.feedColumnLength = feed.length / 3
-        while(feed.length) {
-          $scope.feedColumns.push(feed.splice(0, $scope.feedColumnLength))
+     $scope.generateColumns = (arr, n) => {
+
+        var rest = arr.length % n,
+        restUsed = rest,
+        partLength = Math.floor(arr.length / n),
+        result = [];
+    
+    for(var i = 0; i < arr.length; i += partLength) {
+        var end = partLength + i,
+            add = false;
+        
+        if(rest !== 0 && restUsed) {
+            end++;
+            restUsed--;
+            add = true;
         }
-        if($scope.feedColumns.length === 4){
-          $scope.feedColumns[3].forEach((val, key) => {
-            $scope.feedColumns[ Math.floor(Math.random() * (2 - 0 + 1)) + 0 ].push(val)
-          })
-          $scope.feedColumns.pop()
+        
+        result.push(arr.slice(i, end));
+        
+        if(add) {
+            i++;
         }
-      return [].concat.apply([], $scope.feedColumns)
-      }
     }
-    $scope.feeds = $scope.generateColumns($scope.feed.posts)
+    
+    return result;
+
+      //   let feedColumns = []
+      //   let feedColumnLength = feed.length / 3
+      //   while(feed.length) {
+      //     feedColumns.push(feed.splice(0, feedColumnLength))
+      //     console.log(feedColumns)
+      //   }
+      //   if(feedColumns.length === 4){
+      //     feedColumns[3].forEach((val, key) => {
+      //       feedColumns[ Math.floor(Math.random() * (2 - 0 + 1)) + 0 ].push(val)
+      //     })
+      //     feedColumns.pop()
+      //   }
+      // let columnArr = []
+      // // columnArr = feedColumns.concat.apply([], feedColumns)
+      // // console.log(columnArr)
+      // console.log(feedColumns)
+      // return feedColumns
+
+      
+    }
+    $scope.feeds = $scope.generateColumns($scope.feed.posts, 3)
     console.log($scope.feeds)
+    console.log($scope.feedColumns)
+    
+  
     $scope.loadPost = (post_id) => {
       $state.go('dash.showPost', { feed_name: getFeed, post_id })
     }
@@ -57,7 +87,7 @@
           targetEvent: ev,
         }).then((postResp) => {
           subFeedFactory.getPostsForFeed(getFeedById.data.id)
-          .then((updatedFeed) => $scope.feeds = $scope.generateColumns(updatedFeed.data.posts))
+          .then((updatedFeed) => $scope.feeds = $scope.generateColumns(updatedFeed.data.posts, 3))
         })
     }
 
@@ -68,7 +98,7 @@
           locals: { post },
         }).then((commentResponse) => {
           subFeedFactory.getPostsForFeed(getFeedById.data.id)
-          .then((updatedFeed) => $scope.feeds = $scope.generateColumns(updatedFeed.data.posts))
+          .then((updatedFeed) => $scope.feeds = $scope.generateColumns(updatedFeed.data.posts, 3))
         })
     }
     $scope.upVote = (post_id) => {

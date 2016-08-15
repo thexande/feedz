@@ -23,7 +23,6 @@ const Post = db.bookshelf.Model.extend({
   karma: function() {
     return this.hasMany(Karma)
   }
-
 })
 const Comment = db.bookshelf.Model.extend({
   tableName: 'feedz_comments',

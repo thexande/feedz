@@ -2,6 +2,9 @@
 .button-container {
   padding-right: 46px !important;
 }
+md-dialog {
+  width: 700px !important;
+}
 
 .md-list-button-pad {
   padding right: 10px !important;

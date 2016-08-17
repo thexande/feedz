@@ -25,5 +25,4 @@ router.route('/down/:id')
   .post(passport.authenticate('bearer', {session: false}), (req, res, next) => {
 
   })
-
 module.exports = router

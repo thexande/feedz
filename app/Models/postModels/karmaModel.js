@@ -17,7 +17,7 @@ module.exports = class karmaModel {
           .where('feedz_user_id', user_id)
           .where('feedz_post_id', post_id)
           .update('upvote', !karmaRecord.upvote)
-          .update('downvote', !karmaRecord.downvote)
+          .update('downvote∫', !karmaRecord.downvote)
       } else {
         console.log("no karma")
       }

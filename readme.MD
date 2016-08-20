@@ -1,6 +1,6 @@
 # FEEDZ Reddit Clone
 Demo: 
-![demo]("https://github.com/thexande/feedz/raw/master/feedz.gif")
+![demo](feedz.gif?raw=true "Demo")
 
 This is a reddit clone project written with Node.js Express, Angular js and PostgreSQL Database.
 
